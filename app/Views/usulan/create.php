@@ -27,7 +27,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-4">
-              <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/verification-img.png" width="100%" alt="">
+              <img src="<?= base_url()?>assets/images/verification-img.png" width="100%" alt="">
             </div>
             <div class="col-8">
               <form class="" action="<?= site_url('usulan/create')?>" method="post">
