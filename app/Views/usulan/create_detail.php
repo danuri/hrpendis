@@ -12,7 +12,7 @@
 
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
-            <li class="breadcrumb-item"><a href="<?- site_url('layanan/mutasi')?>">Usulan Mutasi</a></li>
+            <li class="breadcrumb-item"><a href="<?- site_url('usulan')?>">Usulan</a></li>
             <li class="breadcrumb-item active">Detail Usulan</li>
         </ol>
       </div>
@@ -139,7 +139,7 @@
                             <td id="output<?= $row->id?>"><?= ($row->lampiran)?'<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/'.$row->lampiran.'\')">Lihat Dokumen</a>':'Belum Diunggah';?></td>
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id?>').click()"><i class="bx bx-upload align-middle"></i></button>
-                              <form method="POST" action="<?= site_url('layanan/dokumen/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
+                              <form method="POST" action="<?= site_url('dokumen/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nip" value="<?= $usulan->nip ?>">
                                 <input type="hidden" name="usul" value="<?= encrypt($usulan->id) ?>">
                                 <input type="hidden" name="iddok" value="<?= $row->dokumen ?>">
@@ -175,7 +175,7 @@
                       </div>
                       <div class="d-flex align-items-start gap-3 mt-4">
                         <button type="button" class="btn btn-light btn-label previestab" data-previous="v-pills-2-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Kembali</button>
-                        <a type="button" class="btn btn-warning btn-label right ms-auto nexttab" href="<?= site_url('layanan/mutasi/submit/'.encrypt($usulan->id))?>" onclick="return confirm('Anda yakin akan mengirimkan usulan?')" id="submitbutton" disabled><i class="ri-upload-line label-icon align-middle fs-16 ms-2"></i>Kirim Usulan</a>
+                        <a type="button" class="btn btn-warning btn-label right ms-auto nexttab" href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" onclick="return confirm('Anda yakin akan mengirimkan usulan?')" id="submitbutton" disabled><i class="ri-upload-line label-icon align-middle fs-16 ms-2"></i>Kirim Usulan</a>
                       </div>
                     </div>
                   </div>
