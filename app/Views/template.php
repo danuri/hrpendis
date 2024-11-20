@@ -29,6 +29,7 @@
     <link href="<?= base_url()?>assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url()?>assets/css/custom.css" rel="stylesheet" type="text/css" />
     <?= $this->renderSection('style') ?>
+    var base_url = '<?= base_url()?>';
 
 </head>
 

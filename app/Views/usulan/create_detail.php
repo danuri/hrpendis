@@ -276,7 +276,7 @@ document.querySelectorAll(".form-steps").forEach(function (form) {
 
             if(nextTab == 'v-pills-2-tab'){
               console.log(nextTab);
-              $('#pengantar').ajaxSubmit( { beforeSubmit: validate, warning: function(){ document.getElementById(nextTab).click(); } } );
+              $('#pengantar').ajaxSubmit( { beforeSubmit: validate, success: function(){ document.getElementById(nextTab).click(); } } );
             }else{
               document.getElementById(nextTab).click();
             }
