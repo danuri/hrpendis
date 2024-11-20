@@ -21,7 +21,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card border card-border-success">
       <div class="card-body p-4">
         <div class="row g-4">
           <div class="col-auto">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card border card-border-success">
       <div class="card-body">
         <form method="post" action="<?= site_url('usulan/save') ?>" class="" id="pengantar">
           <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
@@ -79,7 +79,7 @@
         </form>
       </div>
     </div>
-    <div class="card">
+    <div class="card border card-border-success">
       <div class="card-body">
         <table class="table table-bordered table-striped">
           <thead>

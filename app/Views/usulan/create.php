@@ -23,7 +23,7 @@
   <div class="col-lg-12">
 
     <div class="col-lg-12">
-      <div class="card">
+      <div class="card border card-border-success">
         <div class="card-body">
           <div class="row">
             <div class="col-4">

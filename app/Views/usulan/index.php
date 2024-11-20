@@ -23,7 +23,7 @@
   <div class="col-lg-12">
 
       <div class="col-lg-12">
-        <div class="card">
+        <div class="card border card-border-success">
           <div class="card-body">
             <form action="javascript:void(0);" class="row g-3">
                 <div class="col-md-4">

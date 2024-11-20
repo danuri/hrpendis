@@ -22,7 +22,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card border card-border-success">
       <div class="card-body p-4">
         <div class="row g-4">
           <div class="col-auto">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card border card-border-success">
       <div class="card-body">
         <div class="vertical-navs-step form-steps">
           <div class="row gy-5">
