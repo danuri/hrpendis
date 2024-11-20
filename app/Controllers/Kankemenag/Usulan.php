@@ -41,6 +41,10 @@ class Usulan extends BaseController
         return view('kankemenag/usulan/detail_pengantar', $data);
     }
 
+    function pengantar() {
+      
+    }
+
     public function getdata()
     {
       $db = \Config\Database::connect('default', false);

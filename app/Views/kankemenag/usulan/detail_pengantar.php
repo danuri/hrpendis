@@ -105,7 +105,7 @@
             <h5>Lampirkan Surat Pengantar dari Kankemenag</h5>
         </div>
       <div class="card-body">
-      <form method="post" action="<?= site_url('usulan/save') ?>" class="" id="pengantar">
+      <form method="post" action="<?= site_url('usulan/pengantar') ?>" class="" id="pengantar">
           <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
           <div class="row mb-4">
             <label for="perihal" class="col-sm-3 col-form-label">Perihal</label>
