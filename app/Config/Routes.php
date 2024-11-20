@@ -27,8 +27,8 @@ use CodeIgniter\Router\RouteCollection;
       $routes->get('detail/(:any)', 'Kankemenag\Usulan::detail/$1');
       $routes->get('accept/(:any)', 'Kankemenag\Usulan::accept/$1');
       $routes->get('getdata', 'Kankemenag\Usulan::getdata');
-      $routes->post('save', 'Usulan::save');
-      $routes->get('submit/(:any)', 'Usulan::submit/$1');
+      $routes->post('save', 'Kankemenag\Usulan::save');
+      $routes->get('submit/(:any)', 'Kankemenag\Usulan::submit/$1');
     }else if(session('level') == 2){
       $routes->get('', 'Kanwil\Usulan::index');
       $routes->get('detail/(:any)', 'Kanwil\Usulan::detail/$1');

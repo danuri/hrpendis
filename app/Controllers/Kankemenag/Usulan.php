@@ -43,7 +43,7 @@ class Usulan extends BaseController
         if($row->status == 1){
           return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Terima usulan?\')">Terima</a>';
         }else{
-          return '<a href="javascript:;" type="button" class="btn btn-primary btn-sm" onClick="preview(\''.$row->id.'\')">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Log</a>';
+          return '<a href="'.site_url('usulan/detail/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Log</a>';
         }
       })->format('status', function($value, $meta){
         return usul_status($value);

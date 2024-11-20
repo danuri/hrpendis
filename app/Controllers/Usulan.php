@@ -98,7 +98,7 @@ class Usulan extends BaseController
         if($row->status == 0){
           return '<a href="'.site_url('usulan/detail/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" target="_blank">Edit</a> <a href="'.site_url('usulan/delete/'.encrypt($row->id)).'" type="button" class="btn btn-danger btn-sm">Delete</a>';
         }else{
-          return '<a href="javascript:;" type="button" class="btn btn-primary btn-sm" onClick="preview(\''.$row->id.'\')">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Log</a>';
+          return '<a href="javascript:;" type="button" class="btn btn-primary btn-sm" onClick="preview(\''.$row->id.'\')">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Logs</a>';
         }
       })->format('status', function($value, $meta){
         return usul_status($value);
