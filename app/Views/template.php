@@ -44,21 +44,21 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="index.html" class="logo logo-dark">
+                    <a href="<?= site_url()?>" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="<?= base_url()?>assets/images/samar.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="17">
+                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="<?= site_url()?>" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="<?= base_url()?>assets/images/samar.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="17">
+                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
                         </span>
                     </a>
                 </div>
