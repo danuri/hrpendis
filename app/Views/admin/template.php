@@ -9,24 +9,24 @@
     <meta content="Layanan Kepegawaian Direktorat Jenderal Pendidikan Islam Kementerian Agama RI" name="description" />
     <meta content="Danunih" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= base_url()?>assets/images/favicon.ico">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
     <!--datatable responsive css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
-    <link href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url()?>assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
     <!-- Layout config Js -->
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/js/layout.js"></script>
+    <script src="<?= base_url()?>assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
-    <link href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url()?>assets/css/custom.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url()?>assets/css/custom.css" rel="stylesheet" type="text/css" />
     <?= $this->renderSection('style') ?>
 
@@ -45,19 +45,19 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-sm.png" alt="" height="22">
+                            <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-dark.png" alt="" height="17">
+                            <img src="<?= base_url()?>assets/images/logo-dark.png" alt="" height="17">
                         </span>
                     </a>
 
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-sm.png" alt="" height="22">
+                            <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-light.png" alt="" height="17">
+                            <img src="<?= base_url()?>assets/images/logo-light.png" alt="" height="17">
                         </span>
                     </a>
                 </div>
@@ -105,7 +105,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="<?= base_url()?>assets/images/users/avatar-1.jpg" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
@@ -155,7 +155,7 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-sm.png" alt="" height="22">
+                        <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="<?= base_url()?>assets/img/hrms.png" alt="" height="30">
@@ -164,10 +164,10 @@
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-sm.png" alt="" height="22">
+                        <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/logo-light.png" alt="" height="17">
+                        <img src="<?= base_url()?>assets/images/logo-light.png" alt="" height="17">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -287,13 +287,13 @@
     </div>
 
     <!-- JAVASCRIPT -->
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/node-waves/waves.min.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/js/plugins.js"></script>
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="<?= base_url()?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url()?>assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="<?= base_url()?>assets/libs/node-waves/waves.min.js"></script>
+    <script src="<?= base_url()?>assets/libs/feather-icons/feather.min.js"></script>
+    <script src="<?= base_url()?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="<?= base_url()?>assets/js/plugins.js"></script>
+    <script src="<?= base_url()?>assets/libs/sweetalert2/sweetalert2.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -302,7 +302,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 
     <!-- App js -->
-    <script src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/js/app.js"></script>
+    <script src="<?= base_url()?>assets/js/app.js"></script>
     <script type="text/javascript">
     function alert($text) {
       Toastify({
