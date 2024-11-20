@@ -85,8 +85,7 @@
           <thead>
             <tr>
               <th>DOKUMEN</th>
-              <th>STATUS</th>
-              <th>VERIFIKASI</th>
+              <th>LAMPIRAN</th>
             </tr>
           </thead>
           <tbody>
@@ -94,24 +93,40 @@
               <tr>
                 <td><?= $row->keterangan ?></td>
                 <td id="output<?= $row->id ?>"><?= ($row->lampiran) ? '<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/' . $row->lampiran . '\')">Lihat Dokumen</a>' : 'Belum Diunggah'; ?></td>
-                <td>
-                  <?php if($row->lampiran){?>
-                    <input type="checkbox" class="form-check-input formcheck" id="<?= $row->iddoc;?>" <?= ($row->status == 1)?'checked':'';?> value="1">
-                    <label class="form-check-label" for="<?= $row->iddoc;?>">
-                      Sesuai
-                    </label>
-                  </div>
-                  <?php }?>
-                </td>
               </tr>
             <?php } ?>
           </tbody>
         </table>
       </div>
     </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Lampirkan Surat Pengantar dari Kankemenag</h5>
+        </div>
+      <div class="card-body">
+      <form method="post" action="<?= site_url('usulan/save') ?>" class="" id="pengantar">
+          <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
+          <div class="row mb-4">
+            <label for="perihal" class="col-sm-3 col-form-label">Perihal</label>
+            <div class="col-sm-9">
+              <input type="text" name="kab_pengantar" class="form-control" id="kab_pengantar" value="<?= $usulan->kab_pengantar ?>">
+            </div>
+          </div>
+          <div class="row mb-4">
+            <label for="perihal" class="col-sm-3 col-form-label">Lampiran</label>
+            <div class="col-sm-9">
+            <div class="input-group">
+                <input type="file" class="form-control" name="kab_pengantar_file" id="inputGroup" aria-describedby="kab_pengantar_file" aria-label="Upload">
+                <button class="btn btn-outline-success" type="button" id="kab_pengantar_file">Simpan</button>
+            </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="text-end mb-5">
-      <button type="submit" class="btn btn-danger" onclick="declined()">Kembalikan</button>
-      <a href="<?= site_url('usulan/detail/pengantar/'.encrypt($usulan->id))?>" class="btn btn-primary d-none" id="btnNext">Selanjutnya</a>
+      <a href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" class="btn btn-primary" id="btnNext">Kirim Ke Kanwil</a>
     </div>
   </div>
 </div>
@@ -136,67 +151,9 @@
 <script src="https://malsup.github.io/jquery.form.js" charset="utf-8"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('.formcheck').change(function(event) {
-    if(this.checked) {
-      $.get('<?= site_url('dokumen/validasi');?>/'+this.id+'/1', function() {
-        alert('Berkas divalidasi');
-      });
-    }else{
-      $.get('<?= site_url('dokumen/validasi');?>/'+this.id+'/0', function() {
-        alert('Berkas belum divalidasi');
-      });
-    }
-    cekVerifikasi();
-  });
 
   });
 
-  function cekVerifikasi() {
-    jdoc = <?= count($dokumen)?>;
-    jver = $('.formcheck:checked').length;
-
-    if(jdoc == jver){
-      console.log('ok');
-      $('#btnNext').removeClass('d-none');
-    }else{
-      console.log('no');
-      $('#btnNext').addClass('d-none');
-    }
-  }
-
-  function cari() {
-    $nip = $('#nip').val();
-
-    axios.get('<?= site_url() ?>ajax/pegawai/' + $nip)
-      .then(function(response) {
-        console.log(response.data.data);
-      });
-  }
-
-  function uploadfile(id) {
-    $('#form' + id).ajaxSubmit({
-      // target: '#output'+id,
-      beforeSubmit: function(a, f, o) {
-        alert('Mengunggah');
-      },
-      success: function(data) {
-        if (data.status == 'error') {
-          Swal.fire({
-            title: "Ooppss...",
-            text: data.message,
-            icon: "error",
-            confirmButtonColor: "#5b73e8"
-          });
-        } else {
-          Swal.fire({
-            html: "Dokumen telah diunggah",
-            confirmButtonColor: "#5b73e8"
-          });
-          $('#output' + id).html(data.message);
-        }
-      }
-    });
-  }
 
   function preview(berkas) {
     $('#object').html('<object data="' + berkas + '" type="application/pdf" width="100%" style="height: 80vh;" id="object">' +
@@ -205,50 +162,5 @@
     $('#preview').modal('show');
   }
 
-  function declined() {
-  Swal.fire({
-    text: 'Masukan informasi pengembalian!',
-    input: 'text',
-    inputAttributes: {
-      autocapitalize: 'off'
-    },
-    showCancelButton: true,
-    confirmButtonText: 'Kembalikan Berkas',
-    showLoaderOnConfirm: true,
-    preConfirm: (data) => {
-      return fetch('<?= site_url('usulan/decline/'.encrypt($usulan->id)) ?>', {
-        method: "POST",
-        body: JSON.stringify({ keterangan: data }),
-        headers: {"Content-type": "application/json; charset=UTF-8"}})
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(response.statusText)
-          }
-          return response.json()
-        })
-        .catch(error => {
-          Swal.showValidationMessage(
-            `Request failed: ${error}`
-          )
-        })
-      },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // redirect
-      }
-    });
-  }
-
-  function validate(formData, jqForm, options) {
-    for (var i = 0; i < formData.length; i++) {
-      if (!formData[i].value) {
-        alert('Harap isi dengan lengkap!');
-        return false;
-      }
-    }
-
-    return true;
-  }
 </script>
 <?= $this->endSection() ?>

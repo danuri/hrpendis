@@ -29,6 +29,18 @@ class Usulan extends BaseController
         return view('kankemenag/usulan/detail', $data);
     }
 
+    public function detailpengantar($id)
+    {
+        $lmodel = new LayananModel;
+        $model = new UsulanModel;
+        $docm = new DokLayananModel;
+        $id = decrypt($id);
+
+        $data['usulan'] = $model->find($id);
+        $data['dokumen'] = $docm->getDokumen(1,$id);
+        return view('kankemenag/usulan/detail_pengantar', $data);
+    }
+
     public function getdata()
     {
       $db = \Config\Database::connect('default', false);

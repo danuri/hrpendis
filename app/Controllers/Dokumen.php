@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CrudModel;
 use App\Models\UsulDokumenModel;
-use App\Models\TubelModel;
 use Aws\S3\S3Client;
 
 class Dokumen extends BaseController
@@ -177,7 +176,15 @@ class Dokumen extends BaseController
         }
         return $this->response->setJSON(['status'=>'success','message'=>'<a href="https://ropeg.kemenag.go.id:9000/layanan/dokumen/'.$file_name.'" target="_blank">Lihat Dokumen</a>']);
       }else{
-        return $this->response->setJSON(['status'=>'error','message'=>$file->getError()]);
+        return $this->response->setJSON(['status'=>'error','message'=>'Gagal mengunggah']);
       }
+    }
+
+    public function validasi($id,$status)
+    {
+      $model = new UsulDokumenModel();
+
+      $update = $model->update($id,['status'=>1]);
+      echo 'ok';
     }
 }

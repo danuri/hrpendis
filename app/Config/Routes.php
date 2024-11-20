@@ -24,6 +24,7 @@ use CodeIgniter\Router\RouteCollection;
       $routes->get('submit/(:any)', 'Usulan::submit/$1');
     }else if(session('level') == 3){
       $routes->get('', 'Kankemenag\Usulan::index');
+      $routes->get('detail/pengantar/(:any)', 'Kankemenag\Usulan::detailpengantar/$1');
       $routes->get('detail/(:any)', 'Kankemenag\Usulan::detail/$1');
       $routes->get('accept/(:any)', 'Kankemenag\Usulan::accept/$1');
       $routes->get('getdata', 'Kankemenag\Usulan::getdata');
@@ -43,6 +44,7 @@ use CodeIgniter\Router\RouteCollection;
    $routes->get('view/(:num)/(:num)', 'Dokumen::view/$1/$2');
    $routes->get('embed/(:num)/(:num)', 'Dokumen::embed/$1/$2');
    $routes->post('upload', 'Dokumen::upload');
+   $routes->get('validasi/(:num)/(:num)', 'Dokumen::validasi/$1/$2');
  });
 
  $routes->group("ajax", ["filter" => "auth"], function ($routes) {

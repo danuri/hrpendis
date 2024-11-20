@@ -46,8 +46,8 @@ class DokLayananModel extends Model
 
     public function getDokumen($idlayanan,$idusul)
     {
-      $query = $this->db->query("SELECT a.*,b.lampiran,c.keterangan FROM tm_layanan_dokumen a
-                                LEFT JOIN (SELECT id_dokumen,lampiran FROM tr_usul_dokumen WHERE id_usul='$idusul' AND id_layanan='$idlayanan') b
+      $query = $this->db->query("SELECT a.*,b.lampiran,b.id as iddoc,b.status,c.keterangan FROM tm_layanan_dokumen a
+                                LEFT JOIN (SELECT id,id_dokumen,lampiran,status FROM tr_usul_dokumen WHERE id_usul='$idusul' AND id_layanan='$idlayanan') b
                                 ON b.id_dokumen=a.dokumen
                                 LEFT JOIN tm_dokumen c
                                 ON c.id=a.dokumen
