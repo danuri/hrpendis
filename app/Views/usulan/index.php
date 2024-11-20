@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card border card-border-success">
           <div class="card-body">
 
             <table id="datatables" class="display table table-bordered dt-responsive fonttab" style="width:100%">
