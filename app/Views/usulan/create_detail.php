@@ -12,7 +12,8 @@
 
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
-          <!-- <li class="breadcrumb-item "><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Buat Usul</button></li> -->
+            <li class="breadcrumb-item"><a href="<?- site_url('layanan/mutasi')?>">Usulan Mutasi</a></li>
+            <li class="breadcrumb-item active">Detail Usulan</li>
         </ol>
       </div>
     </div>
@@ -26,7 +27,7 @@
         <div class="row g-4">
           <div class="col-auto">
             <div class="avatar-lg">
-              <img src="https://d2mj1s7x3czrue.cloudfront.net/hrms/assets/images/users/avatar-1.jpg" alt="user-img" class="img-thumbnail rounded-circle">
+              <img src="<?= base_url()?>assets/images/users/avatar-1.jpg" alt="user-img" class="img-thumbnail rounded-circle">
             </div>
           </div>
           <!--end col-->
@@ -60,7 +61,7 @@
                   </span>
                   Dokumen Persyaratan
                 </button>
-                <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">
+                <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false" disabled>
                   <span class="step-title me-2">
                     <i class="ri-close-circle-fill step-icon me-2"></i> Step 3
                   </span>
@@ -112,7 +113,7 @@
                     </div>
 
                     <div class="d-flex align-items-start gap-3 mt-4">
-                      <button type="button" class="btn btn-success btn-label right ms-auto nexttab" data-nexttab="v-pills-2-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Berikutnya</button>
+                      <button type="button" class="btn btn-warning btn-label right ms-auto nexttab" data-nexttab="v-pills-2-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Berikutnya</button>
                     </div>
                     </form>
                   </div>
@@ -138,7 +139,7 @@
                             <td id="output<?= $row->id?>"><?= ($row->lampiran)?'<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/'.$row->lampiran.'\')">Lihat Dokumen</a>':'Belum Diunggah';?></td>
                             <td>
                               <button type="button" class="btn btn-soft-danger waves-effect waves-light btn-sm" onclick="$('#file<?= $row->id?>').click()"><i class="bx bx-upload align-middle"></i></button>
-                              <form method="POST" action="<?= site_url('dokumen/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
+                              <form method="POST" action="<?= site_url('layanan/dokumen/upload') ?>" style="display: none;" id="form<?= $row->id ?>" enctype="multipart/form-data">
                                 <input type="hidden" name="nip" value="<?= $usulan->nip ?>">
                                 <input type="hidden" name="usul" value="<?= encrypt($usulan->id) ?>">
                                 <input type="hidden" name="iddok" value="<?= $row->dokumen ?>">
@@ -152,7 +153,7 @@
                     </table>
                     <div class="d-flex align-items-start gap-3 mt-4">
                       <button type="button" class="btn btn-light btn-label previestab" data-previous="v-pills-1-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Kembali</button>
-                      <button type="button" class="btn btn-success btn-label right ms-auto nexttab" data-nexttab="v-pills-3-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Review Usulan</button>
+                      <button type="button" class="btn btn-warning btn-label right ms-auto nexttab" data-nexttab="v-pills-3-tab" id="reviewbutton"  disabled><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Review Usulan</button>
                     </div>
                   </div>
                   <!-- end tab pane -->
@@ -174,7 +175,7 @@
                       </div>
                       <div class="d-flex align-items-start gap-3 mt-4">
                         <button type="button" class="btn btn-light btn-label previestab" data-previous="v-pills-2-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Kembali</button>
-                        <a type="button" class="btn btn-success btn-label right ms-auto nexttab" href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" onclick="return confirm('Anda yakin akan mengirimkan usulan?')"><i class="ri-upload-line label-icon align-middle fs-16 ms-2"></i>Kirim Usulan</a>
+                        <a type="button" class="btn btn-warning btn-label right ms-auto nexttab" href="<?= site_url('layanan/mutasi/submit/'.encrypt($usulan->id))?>" onclick="return confirm('Anda yakin akan mengirimkan usulan?')" id="submitbutton" disabled><i class="ri-upload-line label-icon align-middle fs-16 ms-2"></i>Kirim Usulan</a>
                       </div>
                     </div>
                   </div>
@@ -214,66 +215,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-  var table = $('#datatables').DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: {
-      url: '<?= site_url('manajemen/pegawai/getdata')?>',
-      data: function (d) {
-        d.jabatan = $('#jabatan').val(),
-        d.jenis = $('#jenis').val();
-        d.unit = $('#unit').val();
-      }
-    },
-    columns: [
-      {data: 'NIP_BARU'},
-      {data: 'NAMA_LENGKAP'},
-      {data: 'TAMPIL_JABATAN'},
-      {data: 'SATKER_2'},
-      {data: 'SATKER_4'},
-      {data: 'STATUS_PEGAWAI'},
-      {data: 'action', orderable: false}
-    ]
-  });
-
-  $(".select2").select2()
-  $('#satker1').on('change', function(event) {
-    getsatker($('#satker1').val());
-    $('#selectsatker2').css('display','');
-  });
-
-  $('#satker2').on('change', function(event) {
-    getsatker($('#satker2').val());
-    $('#selectsatker3').css('display','');
-  });
-
-  $('#jabatan').change(function(event) {
-    table.ajax.reload();
-  });
-
-  $('#jenis').change(function(event) {
-    table.ajax.reload();
-  });
-
-  $('#unit').change(function(event) {
-    table.ajax.reload();
-  });
-
-  $('#cari').on('click', function(event) {
-    $nip = $('#nip').val();
-
-    if($nip == ''){
-      alert('NIP tidak boleh kosong');
-    }else{
-      axios.get('<?= site_url()?>ajax/pegawai/'+$nip)
-      .then(function (response) {
-        $('#nama').val(response.data.data.NAMA_LENGKAP);
-        $('#jabatan').val(response.data.data.TAMPIL_JABATAN);
-        $('#satker').val(response.data.data.SATKER_3);
-      });
-    }
-
-  });
+  if ($( "table:contains('Belum Diunggah')" ).length == 0) {
+    $('#reviewbutton').removeAttr('disabled');
+    $('#v-pills-3-tab').removeAttr('disabled');
+  }
 
 });
 
@@ -292,12 +237,16 @@ function uploadfile(id) {
     beforeSubmit: function(a,f,o) {
       alert('Mengunggah');
     },
-    success: function(data) {
+    warning: function(data) {
       if(data.status == 'error'){
         Swal.fire({title:"Ooppss...",text:data.message,icon:"error",confirmButtonColor:"#5b73e8"});
       }else{
         Swal.fire({html:"Dokumen telah diunggah",confirmButtonColor:"#5b73e8"});
         $('#output'+id).html(data.message);
+
+        if ($( "table:contains('Belum Diunggah')" ).length == 0) {
+          $('#reviewbutton').removeAttr('disabled');
+        }
       }
     }
   });
@@ -327,7 +276,7 @@ document.querySelectorAll(".form-steps").forEach(function (form) {
 
             if(nextTab == 'v-pills-2-tab'){
               console.log(nextTab);
-              $('#pengantar').ajaxSubmit( { beforeSubmit: validate, success: function(){ document.getElementById(nextTab).click(); } } );
+              $('#pengantar').ajaxSubmit( { beforeSubmit: validate, warning: function(){ document.getElementById(nextTab).click(); } } );
             }else{
               document.getElementById(nextTab).click();
             }
