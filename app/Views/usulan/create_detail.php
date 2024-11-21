@@ -27,7 +27,7 @@
         <div class="row g-4">
           <div class="col-auto">
             <div class="avatar-lg">
-              <img src="<?= base_url()?>assets/images/users/avatar-1.jpg" alt="user-img" class="img-thumbnail rounded-circle">
+              <img src="<?= base_url()?>assets/images/kemenag.jpg" alt="user-img" class="img-thumbnail rounded-circle">
             </div>
           </div>
           <!--end col-->
