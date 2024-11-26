@@ -34,10 +34,13 @@ use CodeIgniter\Router\RouteCollection;
       $routes->get('submit/(:any)', 'Kankemenag\Usulan::submit/$1');
     }else if(session('level') == 2){
       $routes->get('', 'Kanwil\Usulan::index');
+      $routes->get('detail/pengantar/(:any)', 'Kanwil\Usulan::detailpengantar/$1');
       $routes->get('detail/(:any)', 'Kanwil\Usulan::detail/$1');
       $routes->get('accept/(:any)', 'Kanwil\Usulan::accept/$1');
       $routes->get('getdata', 'Kanwil\Usulan::getdata');
       $routes->post('save', 'Kanwil\Usulan::save');
+      $routes->post('pengantar', 'Kanwil\Usulan::pengantar');
+      $routes->get('draftpengantar/(:any)', 'Kanwil\Usulan::draftpengantar/$1');
       $routes->get('submit/(:any)', 'Kanwil\Usulan::submit/$1');
     }
  });

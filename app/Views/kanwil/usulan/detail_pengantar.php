@@ -103,7 +103,7 @@
     <div class="card border card-border-success">
         <div class="card-header">
             <a href="<?= site_url('usulan/draftpengantar/'.encrypt($usulan->id))?>" type="button" class="btn btn-success float-end fs-11">Download Draft</a>
-            <h6 class="card-title mb-0">Lampirkan Surat Pengantar dari Kankemenag</h6>
+            <h6 class="card-title mb-0">Lampirkan Surat Pengantar dari Kanwil</h6>
         </div>
       <div class="card-body">
       <form method="post" action="<?= site_url('usulan/pengantar') ?>" class="" id="pengantar2" enctype="multipart/form-data">
@@ -112,12 +112,10 @@
             <label for="perihal" class="col-sm-3 col-form-label">Lampiran</label>
             <div class="col-sm-9">
             <div class="input-group">
-                <input type="file" class="form-control" name="dokumen" id="inputGroup" aria-describedby="prov_pengantar_file" aria-label="Upload">
+                <input type="file" class="form-control" name="dokumen" id="inputGroup" aria-describedby="kab_pengantar_file" aria-label="Upload">
                 <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan">
             </div>
-            <?php if($usulan->prov_pengantar_file){?>
-              <p>Pengantar telah diunggah: <a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat Lampiran</a></p>
-            <?php } ?>
+            <p>Pengantar telah diunggah: <a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Lampiran</a></p>
             </div>
           </div>
         </form>
@@ -125,7 +123,7 @@
     </div>
     <div class="text-end mb-5">
       <?php if($usulan->prov_pengantar_file){?>
-      <a href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" class="btn btn-primary" onclick="return confirm('Usulan akan dikirim ke Kanwil?')">Kirim Ke Kanwil</a>
+      <a href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" class="btn btn-primary" onclick="return confirm('Usulan akan dikirim ke Ditjen Pendis?')">Kirim Ke Ditjen Pendis</a>
       <?php } ?>
     </div>
   </div>

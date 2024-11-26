@@ -97,7 +97,8 @@ class Usulan extends BaseController
         $model = new UsulanModel;
   
         $data = [
-          'kab_pengantar_file' => $file_name
+          'kab_pengantar_file' => $file_name,
+          'status' => 4
         ];
   
         $update = $model->update($usulid,$data);

@@ -95,45 +95,20 @@
 </div>
 
 <div id="log" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Progres Usulan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                                                <div class="vertical-timeline-item vertical-timeline-element">
-                                                    <div>
-                                                        <span class="vertical-timeline-element-icon bounce-in">
-                                                            <input class="form-check-input" type="radio" name="formradiocolor3" id="formradioRight7" checked="">
-                                                        </span>
-                                                        <div class="vertical-timeline-element-content bounce-in">
-                                                            <h4 class="timeline-title text-success">Usulan Selesai</h4>
-                                                            <p>Yet another one, at <span class="text-success">5:00 PM</span></p>
-                                                            <span class="vertical-timeline-element-date">10 Okt 2024, 10:19 WIB</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="vertical-timeline-item vertical-timeline-element">
-                                                    <div>
-                                                        <span class="vertical-timeline-element-icon bounce-in">
-                                                            <input class="form-check-input" type="radio" name="formradiocolor7" id="formradioRight11" disabled>
-                                                        </span>
-                                                        <div class="vertical-timeline-element-content bounce-in">
-                                                            <h4 class="timeline-title">Usulan diterbitkan Surat Rekomendasi</h4>
-                                                            <p>meeting with team mates about the launch of new product. and tell them about new features</p>
-                                                            <span class="vertical-timeline-element-date">10 Okt 2024, 10:19 WIB</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Progres Usulan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="bodylog">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+      </div>
     </div>
+  </div>
 </div>
 
 <?= $this->endSection() ?>
@@ -201,7 +176,8 @@ function preview(id) {
 }
 
 function log(id) {
-  $('#log').modal('show');
-}
+   $('#bodylog').load('<?= site_url('ajax/log')?>/'+id);
+    $('#log').modal('show');
+  }
 </script>
 <?= $this->endSection() ?>
