@@ -110,8 +110,10 @@
       </div>
     </div>
     <div class="text-end mb-5">
-      <button type="submit" class="btn btn-danger" onclick="declined()">Kembalikan</button>
-      <a href="<?= site_url('usulan/detail/pengantar/'.encrypt($usulan->id))?>" class="btn btn-primary d-none" id="btnNext">Selanjutnya</a>
+      <?php if($usulan->status < 3){ ?>
+        <button type="submit" class="btn btn-danger" onclick="declined()">Kembalikan</button>
+        <a href="<?= site_url('usulan/detail/pengantar/'.encrypt($usulan->id))?>" class="btn btn-primary d-none" id="btnNext">Selanjutnya</a>
+        <?php } ?>
     </div>
   </div>
 </div>
@@ -136,6 +138,8 @@
 <script src="https://malsup.github.io/jquery.form.js" charset="utf-8"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+    cekVerifikasi();
+    
     $('.formcheck').change(function(event) {
     if(this.checked) {
       $.get('<?= site_url('dokumen/validasi');?>/'+this.id+'/1', function() {

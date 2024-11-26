@@ -29,6 +29,8 @@ use CodeIgniter\Router\RouteCollection;
       $routes->get('accept/(:any)', 'Kankemenag\Usulan::accept/$1');
       $routes->get('getdata', 'Kankemenag\Usulan::getdata');
       $routes->post('save', 'Kankemenag\Usulan::save');
+      $routes->post('pengantar', 'Kankemenag\Usulan::pengantar');
+      $routes->get('draftpengantar/(:any)', 'Kankemenag\Usulan::draftpengantar/$1');
       $routes->get('submit/(:any)', 'Kankemenag\Usulan::submit/$1');
     }else if(session('level') == 2){
       $routes->get('', 'Kanwil\Usulan::index');
@@ -49,6 +51,7 @@ use CodeIgniter\Router\RouteCollection;
 
  $routes->group("ajax", ["filter" => "auth"], function ($routes) {
      $routes->get('pegawai/(:any)', 'Ajax::pegawai/$1');
+     $routes->get('log/(:any)', 'Ajax::getLog/$1');
  });
 
  $routes->group("admin", ["filter" => "authAdmin"], function ($routes) {

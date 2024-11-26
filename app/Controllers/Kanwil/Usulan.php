@@ -26,7 +26,12 @@ class Usulan extends BaseController
 
         $data['usulan'] = $model->find($id);
         $data['dokumen'] = $docm->getDokumen(1,$id);
-        return view('kanwil/usulan/detail', $data);
+        
+        if($data['usulan']->status > 4){
+          return view('kanwil/usulan/detail_view', $data);
+        }else{
+          return view('kanwil/usulan/detail', $data);
+        }
     }
 
     public function getdata()

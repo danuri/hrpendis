@@ -326,7 +326,7 @@ function hp($nohp) {
    }else if($status == 3){
      $result = '<span class="badge bg-primary">Diverifikasi Kankemenag</span>';
    }else if($status == 4){
-     $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ka Kankemenag</span>';
+     $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ke Kanwil</span>';
    }else if($status == 5){
      $result = '<span class="badge bg-primary">Dikirim Ke Kanwil</span>';
    }else if($status == 8){
@@ -334,7 +334,7 @@ function hp($nohp) {
    }else if($status == 9){
      $result = '<span class="badge bg-primary">Diverifikasi Kanwil</span>';
    }else if($status == 10){
-     $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ka Kankemenag</span>';
+     $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ke Ditjen Pendis</span>';
    }else if($status == 11){
      $result = '<span class="badge bg-primary">Dikirim ke Ditjen Pendis</span>';
    }else if($status == 12){
