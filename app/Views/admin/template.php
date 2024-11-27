@@ -43,16 +43,16 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="index.html" class="logo logo-dark">
+                    <a href="<?= site_url()?>" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/logo-dark.png" alt="" height="17">
+                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="<?= site_url()?>" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
@@ -153,16 +153,16 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
-                <a href="index.html" class="logo logo-dark">
+                <a href="<?= site_url()?>" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url()?>assets/img/hrms.png" alt="" height="30">
+                        <img src="<?= base_url()?>assets/img/samar.png" alt="" height="30">
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
+                <a href="<?= site_url()?>" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -183,7 +183,7 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('')?>">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                             </a>
                         </li>
@@ -191,13 +191,13 @@
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Usulan</span></li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin/usulan')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('usulan')?>">
                                 <i class="ri-honour-line"></i> <span data-key="t-widgets">Inbox Usulan</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="<?= site_url('admin/tte')?>">
+                            <a class="nav-link menu-link" href="<?= site_url('tte')?>">
                                 <i class="ri-honour-line"></i> <span data-key="t-widgets">TTE Usulan</span>
                             </a>
                         </li>
@@ -209,16 +209,16 @@
                             <div class="collapse menu-dropdown" id="sidebarAdmin">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="<?= site_url('admin/master/layanan')?>" class="nav-link" data-key="t-basic-elements">Layanan</a>
+                                        <a href="<?= site_url('master/layanan')?>" class="nav-link" data-key="t-basic-elements">Layanan</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('admin/master/dokumen')?>" class="nav-link" data-key="t-form-select"> Dokumen </a>
+                                        <a href="<?= site_url('master/dokumen')?>" class="nav-link" data-key="t-form-select"> Dokumen </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('admin/master/download')?>" class="nav-link" data-key="t-checkboxs-radios">Download</a>
+                                        <a href="<?= site_url('master/download')?>" class="nav-link" data-key="t-checkboxs-radios">Download</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="<?= site_url('admin/master/pengelola')?>" class="nav-link" data-key="t-checkboxs-radios">Pengelola</a>
+                                        <a href="<?= site_url('master/pengelola')?>" class="nav-link" data-key="t-checkboxs-radios">Pengelola</a>
                                     </li>
                                 </ul>
                             </div>

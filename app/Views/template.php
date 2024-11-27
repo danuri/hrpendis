@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Layanan Kepegawaian Ditjen Pendis | Kementerian Agama</title>
+    <title>Layanan Administrasi Madrasah | Kementerian Agama</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Layanan Kepegawaian Direktorat Jenderal Pendidikan Islam Kementerian Agama RI" name="description" />
     <meta content="Danunih" name="author" />

@@ -10,9 +10,13 @@ use CodeIgniter\Router\RouteCollection;
  $routes->get('auth/logout', 'Auth::logout');
  $routes->get('auth/callback', 'Auth::callback');
 
- $routes->get('/', 'Home::index',['filter' => 'auth']);
+ if(session('level') == 1){
+    $routes->get('/', 'Admin\Home::index',['filter' => 'auth']);
+ }else{
+  $routes->get('/', 'Home::index',['filter' => 'auth']);
+}
 
- $routes->group("usulan", ["filter" => "auth"], function ($routes) {
+$routes->group("usulan", ["filter" => "auth"], function ($routes) {
 
     if(session('level') == 4){
       $routes->get('', 'Usulan::index');
@@ -42,6 +46,17 @@ use CodeIgniter\Router\RouteCollection;
       $routes->post('pengantar', 'Kanwil\Usulan::pengantar');
       $routes->get('draftpengantar/(:any)', 'Kanwil\Usulan::draftpengantar/$1');
       $routes->get('submit/(:any)', 'Kanwil\Usulan::submit/$1');
+    }else if(session('level') == 1){
+      $routes->get('', 'Admin\Usulan::index');
+      $routes->get('detail/pengantar/(:any)', 'Admin\Usulan::detailpengantar/$1');
+      $routes->get('detail/(:any)', 'Admin\Usulan::detail/$1');
+      $routes->get('accept/(:any)', 'Admin\Usulan::accept/$1');
+      $routes->get('proses/(:any)', 'Admin\Usulan::proses/$1');
+      $routes->get('getdata', 'Admin\Usulan::getdata');
+      $routes->post('save', 'Admin\Usulan::save');
+      $routes->post('pengantar', 'Admin\Usulan::pengantar');
+      $routes->get('draftpengantar/(:any)', 'Admin\Usulan::draftpengantar/$1');
+      $routes->get('submit/(:any)', 'Admin\Usulan::submit/$1');
     }
  });
 

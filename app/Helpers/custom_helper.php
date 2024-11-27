@@ -340,6 +340,8 @@ function hp($nohp) {
    }else if($status == 12){
      $result = '<span class="badge bg-primary">Diterima Ditjen Pendis</span>';
    }else if($status == 13){
+     $result = '<span class="badge bg-primary">Disetujui & Proses Surat Rekomendasi</span>';
+   }else if($status == 14){
      $result = '<span class="badge bg-primary">Proses TTE Surat Rekomendasi</span>';
    }else if($status == 20){
      $result = '<span class="badge bg-success">Selesai</span>';
