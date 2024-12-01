@@ -315,6 +315,20 @@ function hp($nohp) {
    }
  }
 
+ function alasanFormat($string) {
+
+  $bits = explode("\n", $string);
+
+  $newstring = "<ol>";
+  foreach($bits as $bit)
+  {
+    $newstring .= "<li>" . $bit . "</li>";
+  }
+  $newstring .= "</ol>";
+
+  return $newstring;
+ }
+
  function usul_status($status)
  {
    if($status == 0){

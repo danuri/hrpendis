@@ -92,7 +92,6 @@
             <tr>
               <th>DOKUMEN</th>
               <th>STATUS</th>
-              <th>VERIFIKASI</th>
             </tr>
           </thead>
           <tbody>
@@ -100,26 +99,11 @@
               <tr>
                 <td><?= $row->keterangan ?></td>
                 <td id="output<?= $row->id ?>"><?= ($row->lampiran) ? '<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/' . $row->lampiran . '\')">Lihat Dokumen</a>' : 'Belum Diunggah'; ?></td>
-                <td>
-                  <?php if($row->lampiran){?>
-                    <input type="checkbox" class="form-check-input formcheck" id="<?= $row->iddoc;?>" <?= ($row->status == 1)?'checked':'';?> value="1">
-                    <label class="form-check-label" for="<?= $row->iddoc;?>">
-                      Sesuai
-                    </label>
-                  </div>
-                  <?php }?>
-                </td>
               </tr>
             <?php } ?>
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="text-end mb-5">
-      <?php if($usulan->status < 10){ ?>
-        <button type="submit" class="btn btn-danger" onclick="declined()">Kembalikan</button>
-        <a href="<?= site_url('usulan/detail/pengantar/'.encrypt($usulan->id))?>" class="btn btn-primary d-none" id="btnNext">Selanjutnya</a>
-        <?php } ?>
     </div>
   </div>
 </div>

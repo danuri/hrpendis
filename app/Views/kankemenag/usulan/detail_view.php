@@ -76,6 +76,12 @@
               <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->jabatan_penandatangan ?>" disabled>
             </div>
           </div>
+          <div class="row mb-4">
+            <label for="perihal" class="col-sm-3 col-form-label">Alasan</label>
+            <div class="col-sm-9">
+              <?= alasanFormat($usulan->alasan);?>
+            </div>
+          </div>
         </form>
       </div>
     </div>

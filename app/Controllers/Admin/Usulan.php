@@ -31,7 +31,7 @@ class Usulan extends BaseController
         if($row->status == 11){
           return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Terima usulan?\')">Terima</a>';
         }else{
-          return '<a href="javascript:;" type="button" class="btn btn-primary btn-sm" onClick="preview(\''.$row->id.'\')">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Log</a>';
+          return '<a href="'.site_url('usulan/detail/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.$row->id.'\')">Log</a>';
         }
       })->format('status', function($value, $meta){
         return usul_status($value);
@@ -90,5 +90,36 @@ class Usulan extends BaseController
         }else{
           return view('admin/usulan/detail', $data);
         }
+    }
+
+    public function draftsr($id) {
+      $id = decrypt($id);
+
+      $model = new UsulanModel();
+      $usul = $model->find($id);
+
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/template_usul_rekom_pembina.docx');
+
+      $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
+
+      $templateProcessor->setValue('namaPegawai', $usul->nama);
+      $templateProcessor->setValue('nipPegawai', $usul->nip);
+      $templateProcessor->setValue('levelJabatan', $usul->level_jabatan);
+      $templateProcessor->setValue('suratDari', $usul->pengantar_dari);
+      $templateProcessor->setValue('nomorSuratDari', $usul->pengantar_nomor);
+      $templateProcessor->setValue('tglSuratDari', local_date($usul->pengantar_tanggal));
+      $templateProcessor->setValue('pangkatPegawai', $usul->pangkat);
+      $templateProcessor->setValue('golonganPegawai', $usul->golongan);
+      $templateProcessor->setValue('jabatanLama', $usul->jabatan_lama);
+      $templateProcessor->setValue('jabatanBaru', $usul->jabatan_baru);
+      $templateProcessor->setValue('satuanKerja', $usul->unit_kerja);
+
+      $templateProcessor->setValue('nomorSurat', 'nomorsurat');
+      $templateProcessor->setValue('tglSurat', 'tglsurat');
+
+      $filename = 'draft_rekom_'.$id.'.docx';
+      $templateProcessor->saveAs('draft/'.$filename);
+
+      return $this->response->download('draft/'.$filename,null);
     }
 }

@@ -111,6 +111,12 @@
                         <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->jabatan_penandatangan?>" required>
                       </div>
                     </div>
+                    <div class="row mb-4">
+                      <label for="perihal" class="col-sm-3 col-form-label">Alasan</label>
+                      <div class="col-sm-9">
+                        <textarea name="alasan" id="alasan" class="form-control" row="3"></textarea>
+                      </div>
+                    </div>
 
                     <div class="d-flex align-items-start gap-3 mt-4">
                       <button type="button" class="btn btn-warning btn-label right ms-auto nexttab" data-nexttab="v-pills-2-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Berikutnya</button>
@@ -237,15 +243,17 @@ function uploadfile(id) {
     beforeSubmit: function(a,f,o) {
       alert('Mengunggah');
     },
-    warning: function(data) {
-      if(data.status == 'error'){
-        Swal.fire({title:"Ooppss...",text:data.message,icon:"error",confirmButtonColor:"#5b73e8"});
-      }else{
-        Swal.fire({html:"Dokumen telah diunggah",confirmButtonColor:"#5b73e8"});
-        $('#output'+id).html(data.message);
+    success: function(responseText, statusText, xhr, $form) {
 
-        if ($( "table:contains('Belum Diunggah')" ).length == 0) {
+      if(responseText.status == 'error'){
+        Swal.fire({title:"Ooppss...",text:responseText.message,icon:"error",confirmButtonColor:"#5b73e8"});
+      }else{
+        $('#output'+id).html(responseText.message);
+        Swal.fire({html:"Dokumen telah diunggah",confirmButtonColor:"#5b73e8"});
+
+        if ($("table:contains('Belum Diunggah')").length == 0) {
           $('#reviewbutton').removeAttr('disabled');
+          $('#v-pills-3-tab').removeAttr('disabled');
         }
       }
     }
