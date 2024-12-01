@@ -121,8 +121,8 @@
                 <input type="file" class="form-control" name="dokumen" id="inputGroup" aria-describedby="prov_pengantar_file" aria-label="Upload">
                 <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan">
             </div>
-            <?php if($usulan->prov_pengantar_file){?>
-              <p>Pengantar telah diunggah: <a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat Lampiran</a></p>
+            <?php if($usulan->kab_pengantar_file){?>
+              <p>Pengantar telah diunggah: <a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Lampiran</a></p>
             <?php } ?>
             </div>
           </div>
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div class="text-end mb-5">
-      <?php if($usulan->prov_pengantar_file){?>
+      <?php if($usulan->kab_pengantar_file){?>
       <a href="<?= site_url('usulan/submit/'.encrypt($usulan->id))?>" class="btn btn-primary" onclick="return confirm('Usulan akan dikirim ke Kanwil?')">Kirim Ke Kanwil</a>
       <?php } ?>
     </div>

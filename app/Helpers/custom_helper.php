@@ -337,24 +337,30 @@ function hp($nohp) {
      $result = '<span class="badge bg-primary">Dikirim ke Kankemenag</span>';
    }else if($status == 2){
      $result = '<span class="badge bg-primary">Diterima Kankemenag</span>';
+   }else if($status == 21){
+     $result = '<span class="badge bg-danger">Dikembalikan Ke Pengusul</span>';
    }else if($status == 3){
-     $result = '<span class="badge bg-primary">Diverifikasi Kankemenag</span>';
+     $result = '<span class="badge bg-success">Diverifikasi Kankemenag</span>';
    }else if($status == 4){
      $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ke Kanwil</span>';
    }else if($status == 5){
      $result = '<span class="badge bg-primary">Dikirim Ke Kanwil</span>';
    }else if($status == 8){
      $result = '<span class="badge bg-primary">Diterima Kanwil</span>';
+   }else if($status == 81){
+     $result = '<span class="badge bg-danger">Dikembalikan Ke Kankemenag</span>';
    }else if($status == 9){
-     $result = '<span class="badge bg-primary">Diverifikasi Kanwil</span>';
+     $result = '<span class="badge bg-success">Diverifikasi Kanwil</span>';
    }else if($status == 10){
      $result = '<span class="badge bg-primary">Dibuatkan Surat Pengantar Ke Ditjen Pendis</span>';
    }else if($status == 11){
      $result = '<span class="badge bg-primary">Dikirim ke Ditjen Pendis</span>';
    }else if($status == 12){
      $result = '<span class="badge bg-primary">Diterima Ditjen Pendis</span>';
+   }else if($status == 121){
+     $result = '<span class="badge bg-primary">Diterima Ditjen Pendis</span>';
    }else if($status == 13){
-     $result = '<span class="badge bg-primary">Disetujui & Proses Surat Rekomendasi</span>';
+     $result = '<span class="badge bg-success">Disetujui & Proses Surat Rekomendasi</span>';
    }else if($status == 14){
      $result = '<span class="badge bg-primary">Proses TTE Surat Rekomendasi</span>';
    }else if($status == 20){

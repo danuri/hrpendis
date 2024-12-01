@@ -31,7 +31,9 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
       $routes->get('detail/pengantar/(:any)', 'Kankemenag\Usulan::detailpengantar/$1');
       $routes->get('detail/(:any)', 'Kankemenag\Usulan::detail/$1');
       $routes->get('accept/(:any)', 'Kankemenag\Usulan::accept/$1');
+      $routes->get('verifikasi/(:any)', 'Kankemenag\Usulan::verifikasi/$1');
       $routes->get('getdata', 'Kankemenag\Usulan::getdata');
+      $routes->post('decline/(:any)', 'Kankemenag\Usulan::decline/$1');
       $routes->post('save', 'Kankemenag\Usulan::save');
       $routes->post('pengantar', 'Kankemenag\Usulan::pengantar');
       $routes->get('draftpengantar/(:any)', 'Kankemenag\Usulan::draftpengantar/$1');
@@ -43,6 +45,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
       $routes->get('accept/(:any)', 'Kanwil\Usulan::accept/$1');
       $routes->get('getdata', 'Kanwil\Usulan::getdata');
       $routes->post('save', 'Kanwil\Usulan::save');
+      $routes->post('decline/(:any)', 'Kanwil\Usulan::decline/$1');
       $routes->post('pengantar', 'Kanwil\Usulan::pengantar');
       $routes->get('draftpengantar/(:any)', 'Kanwil\Usulan::draftpengantar/$1');
       $routes->get('submit/(:any)', 'Kanwil\Usulan::submit/$1');
@@ -51,6 +54,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
       $routes->get('detail/pengantar/(:any)', 'Admin\Usulan::detailpengantar/$1');
       $routes->get('detail/(:any)', 'Admin\Usulan::detail/$1');
       $routes->get('accept/(:any)', 'Admin\Usulan::accept/$1');
+      $routes->post('decline/(:any)', 'Admin\Usulan::decline/$1');
       $routes->get('proses/(:any)', 'Admin\Usulan::proses/$1');
       $routes->get('getdata', 'Admin\Usulan::getdata');
       $routes->post('save', 'Admin\Usulan::save');

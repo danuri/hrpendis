@@ -58,6 +58,8 @@ class Usulan extends BaseController
 
         if($data['usulan']->status == 0){
           return view('usulan/create_detail', $data);
+        }else if($data['usulan']->status == 21){
+          return view('usulan/create_detail', $data);
         }else{
           return view('usulan/detail_view', $data);
         }

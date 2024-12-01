@@ -116,7 +116,7 @@
       </div>
     </div>
     <div class="text-end mb-5">
-      <?php if($usulan->status < 3){ ?>
+      <?php if($usulan->status < 4){ ?>
         <button type="submit" class="btn btn-danger" onclick="declined()">Kembalikan</button>
         <a href="<?= site_url('usulan/detail/pengantar/'.encrypt($usulan->id))?>" class="btn btn-primary d-none" id="btnNext">Selanjutnya</a>
         <?php } ?>

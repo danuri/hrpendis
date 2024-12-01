@@ -123,7 +123,7 @@ class Usulan extends BaseController
       return DataTable::of($builder)
       ->add('action', function($row){
         if($row->status == 1){
-          return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Cek Berkas?\')">Cek</a>';
+          return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Cek Berkas?\')">Cek</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
         }else{
           return '<a href="'.site_url('usulan/detail/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
         }
@@ -152,6 +152,34 @@ class Usulan extends BaseController
 
       session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
       return redirect()->to('usulan/detail/'.encrypt($id));
+    }
+
+    public function verifikasi($id)
+    {
+      $model = new UsulanModel;
+      $id = decrypt($id);
+      $model->update($id,['status'=>3]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>3,'keterangan'=>'Diverifikasi Kankemenag','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+
+      session()->setFlashdata('message', 'Silahkan melakukan verifikasi.');
+      return redirect()->to('usulan/detail/'.encrypt($id));
+    }
+
+    public function decline($id)
+    {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>21,'keterangan'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>21,'keterangan'=>'Dikembalikan Ke Pengusul. '.$keterangan,'created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+
+      session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
+      return $this->response->setJSON(['status'=>'success']);
     }
 
     public function submit($id)

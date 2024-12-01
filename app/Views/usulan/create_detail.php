@@ -115,6 +115,7 @@
                       <label for="perihal" class="col-sm-3 col-form-label">Alasan</label>
                       <div class="col-sm-9">
                         <textarea name="alasan" id="alasan" class="form-control" row="3"></textarea>
+                        <p>Pisahkan dengan garis baru/Enter</p>
                       </div>
                     </div>
 

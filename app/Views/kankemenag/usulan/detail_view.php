@@ -42,6 +42,18 @@
         </div>
       </div>
     </div>
+
+    <?php if($usulan->status == 81){?>
+  <div class="card border card-border-danger">
+      <div class="card-header">
+      <a href="<?= site_url('usulan/verifikasi/'.encrypt($usulan->id))?>" type="button" class="btn btn-danger float-end fs-11">Edit Usulan</a>
+          <h6 class="card-title mb-0">Informasi Pengembalian</h6>
+      </div>
+      <div class="card-body">
+        <?= $usulan->keterangan?>
+      </div>
+  </div>
+  <?php } ?>
     <div class="card border card-border-success">
       <div class="card-body">
         <form method="post" action="<?= site_url('usulan/save') ?>" class="" id="pengantar">

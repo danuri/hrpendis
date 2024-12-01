@@ -157,6 +157,21 @@ class Usulan extends BaseController
       return redirect()->to('usulan/detail/'.encrypt($id));
     }
 
+    public function decline($id)
+    {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>81,'keterangan'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>81,'keterangan'=>'Dikembalikan Ke Kankemenag. '.$keterangan,'created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+
+      session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
+      return $this->response->setJSON(['status'=>'success']);
+    }
+
     public function submit($id)
     {
       $model = new UsulanModel;
@@ -164,7 +179,7 @@ class Usulan extends BaseController
       $model->update($id,['status'=>11]);
 
       $logm = new LogModel();
-      $logm->insert(['id_usul'=>$id,'status_usulan'=>11,'keterangan'=>'Dikirim Ke Kanwil','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>11,'keterangan'=>'Dikirim Ke Ditjen Pendis','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
 
       session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
       return redirect()->to('usulan/detail/'.encrypt($id));

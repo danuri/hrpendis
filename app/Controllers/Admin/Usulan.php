@@ -60,6 +60,21 @@ class Usulan extends BaseController
       return redirect()->to('usulan/detail/'.encrypt($id));
     }
 
+    public function decline($id)
+    {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>121,'keterangan'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>121,'keterangan'=>'Dikembalikan Ke Kanwil. '.$keterangan,'created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+
+      session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
+      return $this->response->setJSON(['status'=>'success']);
+    }
+
     public function proses($id)
     {
       $model = new UsulanModel;
