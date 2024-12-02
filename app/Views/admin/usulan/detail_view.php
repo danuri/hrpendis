@@ -101,6 +101,14 @@
                 <td id="output<?= $row->id ?>"><?= ($row->lampiran) ? '<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/' . $row->lampiran . '\')">Lihat Dokumen</a>' : 'Belum Diunggah'; ?></td>
               </tr>
             <?php } ?>
+            <tr>
+                <td>Surat Pengantar Kankemenag</td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $row->kab_pengantar_file?>')">Lihat Dokumen</a></td>
+              </tr>
+              <tr>
+                <td>Surat Pengantar Kanwil</td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $row->prov_pengantar_file?>')">Lihat Dokumen</a></td>
+              </tr>
           </tbody>
         </table>
       </div>
@@ -109,7 +117,7 @@
     <div class="card border card-border-success">
         <div class="card-header">
             <a href="javascript:;" type="button" class="btn btn-success float-end fs-11" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat</a>
-            <h6 class="card-title mb-0">Lampirkan Surat Pengantar dari Kankemenag</h6>
+            <h6 class="card-title mb-0">Surat Pengantar dari Kankemenag</h6>
         </div>
     </div>
 
