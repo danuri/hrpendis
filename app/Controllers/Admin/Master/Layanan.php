@@ -3,8 +3,11 @@
 namespace App\Controllers\Admin\Master;
 
 use App\Controllers\BaseController;
+use App\Models\DokumenModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\LayananModel;
+use App\Models\CrudModel;
+use App\Models\DokLayananModel;
 
 class Layanan extends BaseController
 {
@@ -32,5 +35,38 @@ class Layanan extends BaseController
       $save = $model->save($param);
 
       return $this->response->setJSON($save);
+    }
+
+    function dokumen($id) {
+
+      $model = new CrudModel;
+
+      $data['dokumen'] = $model->getLayananDokumen($id);
+      return view('admin/master/layanan_dokumen', $data);
+    }
+
+    function adddokumen() {
+      $model = new DokLayananModel;
+
+      $layanan = $this->request->getVar('layanan');
+      $dokumen = $this->request->getVar('dokumen');
+      $wajib = $this->request->getVar('wajib');
+
+      $data = [
+        'layanan' => $layanan,
+        'dokumen' => $dokumen,
+        'wajib' => $wajib,
+      ];
+
+      $model->insert($data);
+
+      return redirect()->back()->with('message', 'Dokumen telah ditambahkan.');
+    }
+    
+    function deletedokumen($id) {
+      $model = new DokLayananModel;
+      
+      $delete = $model->delete($id);
+      return redirect()->back()->with('message', 'Dokumen telah dihapus.');
     }
 }

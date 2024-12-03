@@ -11,11 +11,12 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Master Layanan</h4>
+            <h4 class="mb-sm-0">Dokumen Layanan</h4>
 
             <div class="page-title-right">
               <ol class="breadcrumb m-0">
-                <li class="breadcrumb-item "><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addModal">Buat Layanan Baru</button></li>
+                <li class=" "><a href="<?= site_url('master/layanan')?>" class="btn btn-success">Kembali</a></li>
+                <li class=" "><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addModal">Tambah Dokumen Persyaratan</button></li>
               </ol>
             </div>
         </div>
@@ -32,30 +33,27 @@
             <table id="datatables" class="display table table-bordered dt-responsive fonttab" style="width:100%">
               <thead>
                 <tr>
-                  <th>Layanan</th>
-                  <th>Kode</th>
+                  <th>Dokumen</th>
                   <th>Keterangan</th>
-                  <th>Dibuat Pada</th>
+                  <th>Wajib</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($layanan as $row) {?>
+                <?php foreach ($dokumen as $row) {?>
                   <tr>
-                    <td><?= $row->layanan?></td>
-                    <td><?= $row->kode?></td>
+                    <td><?= $row->nama_dokumen?></td>
                     <td><?= $row->keterangan?></td>
-                    <td><?= $row->created_at?></td>
-                    <td><a href="<?= site_url('master/layanan/dokumen/'.$row->id)?>" class="btn btn-sm btn-primary">Dokumen</a> <a href="" class="btn btn-sm btn-success">Edit</a></td>
+                    <td><?= $row->wajib?></td>
+                    <td><a href="<?= site_url('master/layanan/deletedokumen/'.$row->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Dokumen akan dihapus dari layanan?')">Delete</a></td>
                   </tr>
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Layanan</th>
-                  <th>Kode</th>
+                    <th>Dokumen</th>
                   <th>Keterangan</th>
-                  <th>Dibuat Pada</th>
+                  <th>Wajib</th>
                   <th>Opsi</th>
                 </tr>
               </tfoot>

@@ -76,39 +76,31 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
      $routes->get('log/(:any)', 'Ajax::getLog/$1');
  });
 
- $routes->group("admin", ["filter" => "authAdmin"], function ($routes) {
-     $routes->get('', 'Admin\Home::index');
+ if(session('level') == 1){
 
-     $routes->group("ajax", function ($routes) {
-         $routes->get('pegawai/(:any)', 'Admin\Ajax::pegawai/$1');
-     });
+   $routes->group("master", ["filter" => "auth"], function ($routes) {
 
-     $routes->group("usulan", function ($routes) {
-         $routes->get('', 'Admin\Usulan::index');
-         $routes->get('detail/(:any)', 'Admin\Usulan::detail/$1');
-         $routes->get('getdata', 'Admin\Usulan::getdata');
-         $routes->post('save', 'Admin\Usulan::save');
-     });
-
-     $routes->group("master/layanan", function ($routes) {
-         $routes->get('', 'Admin\Master\Layanan::index');
-         $routes->get('detail/(:any)', 'Admin\Master\Layanan::detail/$1');
-         $routes->get('getdata', 'Admin\Master\Layanan::getdata');
-         $routes->post('save', 'Admin\Master\Layanan::save');
-     });
-
-     $routes->group("master/dokumen", function ($routes) {
-         $routes->get('', 'Admin\Master\Dokumen::index');
-         $routes->get('detail/(:any)', 'Admin\Master\Dokumen::detail/$1');
-         $routes->get('getdata', 'Admin\Master\Dokumen::getdata');
-         $routes->post('save', 'Admin\Master\Dokumen::save');
-     });
-
-     $routes->group("master/pengelola", function ($routes) {
-         $routes->get('', 'Admin\Master\Pengelola::index');
-         $routes->post('', 'Admin\Master\Pengelola::save');
-         $routes->get('detail/(:any)', 'Admin\Master\Pengelola::detail/$1');
-         $routes->get('getdata', 'Admin\Master\Pengelola::getdata');
-         $routes->post('save', 'Admin\Master\Pengelola::save');
-     });
- });
+       $routes->group("layanan", function ($routes) {
+           $routes->get('', 'Admin\Master\Layanan::index');
+           $routes->get('dokumen/(:any)', 'Admin\Master\Layanan::dokumen/$1');
+           $routes->get('detail/(:any)', 'Admin\Master\Layanan::detail/$1');
+           $routes->get('getdata', 'Admin\Master\Layanan::getdata');
+           $routes->post('save', 'Admin\Master\Layanan::save');
+       });
+  
+       $routes->group("dokumen", function ($routes) {
+           $routes->get('', 'Admin\Master\Dokumen::index');
+           $routes->get('detail/(:any)', 'Admin\Master\Dokumen::detail/$1');
+           $routes->get('getdata', 'Admin\Master\Dokumen::getdata');
+           $routes->post('save', 'Admin\Master\Dokumen::save');
+       });
+  
+       $routes->group("pengelola", function ($routes) {
+           $routes->get('', 'Admin\Master\Pengelola::index');
+           $routes->post('', 'Admin\Master\Pengelola::save');
+           $routes->get('detail/(:any)', 'Admin\Master\Pengelola::detail/$1');
+           $routes->get('getdata', 'Admin\Master\Pengelola::getdata');
+           $routes->post('save', 'Admin\Master\Pengelola::save');
+       });
+   });
+ }

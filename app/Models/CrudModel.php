@@ -82,6 +82,23 @@ class CrudModel extends Model
     return $query;
   }
 
+  public function getLayananDokumen($id)
+  {
+    $query = $this->db->query("SELECT
+                              tm_layanan_dokumen.*, 
+                              tm_dokumen.dokumen AS nama_dokumen, 
+                              tm_dokumen.keterangan
+                            FROM
+                              tm_layanan_dokumen
+                              INNER JOIN
+                              tm_dokumen
+                              ON 
+                                tm_layanan_dokumen.dokumen = tm_dokumen.id
+                            WHERE
+                              tm_layanan_dokumen.layanan = '$id'")->getResult();
+    return $query;
+  }
+
   public function getDetailRequest($id)
   {
     $query = $this->db->query("SELECT
