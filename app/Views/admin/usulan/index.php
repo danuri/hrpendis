@@ -148,7 +148,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-          url: '<?= site_url('admin/usulan/getdata')?>',
+          url: '<?= site_url('usulan/getdata')?>',
             data: function (d) {
                 d.layanan = $('#layanan').val(),
                 d.status = $('#statuslayanan').val();

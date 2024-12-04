@@ -72,11 +72,7 @@ class Auth extends BaseController
 
           session()->set($ses_data);
 
-          if($checkrole->level == 1){
-            return redirect()->to('admin');
-          }else{
-            return redirect()->to('');
-          }
+          return redirect()->to('');
         // }else{
         //   return redirect()->to($_ENV['SSO_SIGNIN'].'?appid='.$_ENV['SSO_APPID'].'&info=2');
         // }
