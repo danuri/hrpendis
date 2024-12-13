@@ -201,14 +201,14 @@ class Usulan extends BaseController
       $model = new UsulanModel();
       $usul = $model->find($id);
 
-      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/template_usul_rekom_pembina.docx');
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/pengantar.docx');
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
 
       $templateProcessor->setValue('namaPegawai', $usul->nama);
       $templateProcessor->setValue('nipPegawai', $usul->nip);
       $templateProcessor->setValue('levelJabatan', $usul->level_jabatan);
-      $templateProcessor->setValue('tujuan', $pembina->pembina_jabatan);
+      // $templateProcessor->setValue('tujuan', $pembina->pembina_jabatan);
       $templateProcessor->setValue('suratDari', $usul->pengantar_dari);
       $templateProcessor->setValue('nomorSuratDari', $usul->pengantar_nomor);
       $templateProcessor->setValue('tglSuratDari', local_date($usul->pengantar_tanggal));

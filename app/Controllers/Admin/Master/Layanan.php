@@ -24,7 +24,6 @@ class Layanan extends BaseController
       $model = new LayananModel;
       $param = [
         'layanan' => $this->request->getVar('layanan'),
-        'kode' => $this->request->getVar('kode'),
         'keterangan' => $this->request->getVar('keterangan'),
       ];
 
@@ -34,13 +33,15 @@ class Layanan extends BaseController
 
       $save = $model->save($param);
 
-      return $this->response->setJSON($save);
+      return redirect()->back()->with('message', 'Layanan telah ditambahkan.');
     }
 
     function dokumen($id) {
 
       $model = new CrudModel;
+      $dok = new DokumenModel;
 
+      $data['dokumens'] = $dok->findAll();
       $data['dokumen'] = $model->getLayananDokumen($id);
       return view('admin/master/layanan_dokumen', $data);
     }

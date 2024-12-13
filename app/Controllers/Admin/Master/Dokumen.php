@@ -30,6 +30,13 @@ class Dokumen extends BaseController
 
       $save = $model->save($param);
 
-      return $this->response->setJSON($save);
+      return redirect()->back()->with('message', 'Dokumen telah ditambahkan.');
+    }
+
+    function delete($id) {
+      $model = new DokumenModel;
+      
+      $delete = $model->delete($id);
+      return redirect()->back()->with('message', 'Dokumen telah dihapus.');
     }
 }

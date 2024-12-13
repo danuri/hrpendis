@@ -15,7 +15,7 @@
 
             <div class="page-title-right">
               <ol class="breadcrumb m-0">
-                <li class="breadcrumb-item "><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addModal">Buat Layanan Baru</button></li>
+                <li class="breadcrumb-item "><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addModal">Buat Dokumen Baru</button></li>
               </ol>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <td><?= $row->dokumen?></td>
                     <td><?= $row->keterangan?></td>
                     <td><?= $row->created_at?></td>
-                    <td></td>
+                    <td><a href="<?= site_url('master/dokumen/delete/'.$row->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Dokumen akan dihapus dari layanan?')">Delete</a></td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -71,10 +71,28 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="object">
-
+            <form action="<?= site_url('master/dokumen/save')?>" method="POST" id="formadd">
+          <div class="row mb-3">
+            <div class="col-lg-3">
+              <label for="dokumen" class="form-label">Kode Dokumen</label>
+            </div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" id="dokumen" name="dokumen" placeholder="Kode Dokumen">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-lg-3">
+              <label for="keterangan" class="form-label">Keterangan</label>
+            </div>
+            <div class="col-lg-9">
+              <textarea class="form-control" id="keterangan" name="keterangan" rows="3" placeholder="Keterangan Dokumen"></textarea>
+            </div>
+          </div>
+        </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-success waves-effect" onclick="$('#formadd').submit()">Simpan</button>
             </div>
         </div>
     </div>

@@ -108,7 +108,7 @@
 
     <div class="card border card-border-success">
         <div class="card-header">
-            <a href="<?= site_url('usulan/draftpengantar/'.encrypt($usulan->id))?>" type="button" class="btn btn-success float-end fs-11">Download Draft</a>
+            <!-- <a href="<?= site_url('usulan/draftpengantar/'.encrypt($usulan->id))?>" type="button" class="btn btn-success float-end fs-11">Download Draft</a> -->
             <h6 class="card-title mb-0">Lampirkan Surat Pengantar dari Kankemenag</h6>
         </div>
       <div class="card-body">

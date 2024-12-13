@@ -45,7 +45,7 @@
                     <td><?= $row->nama_dokumen?></td>
                     <td><?= $row->keterangan?></td>
                     <td><?= $row->wajib?></td>
-                    <td><a href="<?= site_url('master/layanan/deletedokumen/'.$row->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Dokumen akan dihapus dari layanan?')">Delete</a></td>
+                    <td><a href="<?= site_url('master/layanan/dokumen/delete/'.$row->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Dokumen akan dihapus dari layanan?')">Delete</a></td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -68,14 +68,40 @@
     <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Buat Layanan Baru</h5>
+                <h5 class="modal-title" id="myModalLabel">Tambah Dokumen</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="object">
-
+            <form action="<?= site_url('master/layanan/dokumen/save')?>" method="POST" id="formadd">
+              <input type="hidden" name="layanan" id="layanan" value="<?= $row->layanan?>">
+          <div class="row mb-3">
+            <div class="col-lg-3">
+              <label for="dokumen" class="form-label">Dokumen</label>
+            </div>
+            <div class="col-lg-9">
+              <select name="dokumen" class="form-select" id="dokumen">
+                <?php foreach($dokumens as $row){
+                  echo '<option value="'.$row->id.'">'.$row->keterangan.'</option>';                  
+                }?>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-lg-3">
+              <label for="wajib" class="form-label">Wajib</label>
+            </div>
+            <div class="col-lg-9">
+              <select name="wajib" id="wajib" class="form-select">
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+              </select>
+            </div>
+          </div>
+        </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-success waves-effect" onclick="$('#formadd').submit()">Simpan</button>
             </div>
         </div>
     </div>

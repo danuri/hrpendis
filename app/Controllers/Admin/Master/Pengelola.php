@@ -36,7 +36,7 @@ class Pengelola extends BaseController
 
     $save = $model->save($param);
 
-    return redirect()->back()->with('message', 'Pengelola telah ditambahkan');
+    // return redirect()->back()->with('message', 'Pengelola telah ditambahkan');
 
   }
 }
