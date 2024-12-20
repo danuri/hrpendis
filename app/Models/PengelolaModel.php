@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PengelolaModel extends Model
 {
     protected $table            = 'pengelola';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'nip';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
