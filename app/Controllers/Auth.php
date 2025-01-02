@@ -45,9 +45,9 @@ class Auth extends BaseController
         $data = $data->pegawai;
 
         $model = new PengelolaModel;
-        $checkrole = $model->find($data->NIP);
+        $checkrole = $model->where('nip',$data->NIP)->first();
 
-        // if($checkrole){
+        if($checkrole){
 
           $ses_data = [
             'nip'        => $data->NIP,
@@ -73,9 +73,9 @@ class Auth extends BaseController
           session()->set($ses_data);
 
           return redirect()->to('');
-        // }else{
-        //   return redirect()->to($_ENV['SSO_SIGNIN'].'?appid='.$_ENV['SSO_APPID'].'&info=2');
-        // }
+        }else{
+          return redirect()->to($_ENV['SSO_SIGNIN'].'?appid='.$_ENV['SSO_APPID'].'&info=2');
+        }
         // print_r($data);
       }else{
         echo $data->msg;
