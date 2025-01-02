@@ -48,19 +48,19 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="<?= site_url()?>" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="22">
+                            <img src="<?= base_url()?>assets/images/magita.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
+                            <img src="<?= base_url()?>assets/images/magita.png" alt="" height="50">
                         </span>
                     </a>
 
                     <a href="<?= site_url()?>" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="22">
+                            <img src="<?= base_url()?>assets/images/magita.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
+                            <img src="<?= base_url()?>assets/images/magita.png" alt="" height="50">
                         </span>
                     </a>
                 </div>
