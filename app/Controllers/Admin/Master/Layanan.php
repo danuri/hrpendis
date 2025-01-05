@@ -35,6 +35,13 @@ class Layanan extends BaseController
 
       return redirect()->back()->with('message', 'Layanan telah ditambahkan.');
     }
+    
+    function delete($id) {
+      $model = new LayananModel;
+      
+      $delete = $model->delete($id);
+      return redirect()->back()->with('message', 'Layanan telah dihapus.');
+    }
 
     function dokumen($id) {
 

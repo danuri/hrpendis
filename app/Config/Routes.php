@@ -85,6 +85,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
            $routes->get('dokumen/delete/(:num)', 'Admin\Master\Layanan::deletedokumen/$1');
            $routes->get('dokumen/(:any)', 'Admin\Master\Layanan::dokumen/$1');
            $routes->get('detail/(:any)', 'Admin\Master\Layanan::detail/$1');
+           $routes->get('delete/(:any)', 'Admin\Master\Layanan::delete/$1');
            $routes->get('getdata', 'Admin\Master\Layanan::getdata');
            $routes->post('save', 'Admin\Master\Layanan::save');
            $routes->post('dokumen/save', 'Admin\Master\Layanan::adddokumen');

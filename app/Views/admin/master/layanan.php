@@ -46,7 +46,7 @@
                   <td><?= $row->kode ?></td>
                   <td><?= $row->keterangan ?></td>
                   <td><?= $row->created_at ?></td>
-                  <td><a href="<?= site_url('master/layanan/dokumen/' . $row->id) ?>" class="btn btn-sm btn-primary">Dokumen</a> <a href="" class="btn btn-sm btn-success">Edit</a></td>
+                  <td><a href="<?= site_url('master/layanan/dokumen/' . $row->id) ?>" class="btn btn-sm btn-primary">Dokumen</a> <a href="<?= site_url('master/layanan/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Layanan akan dihapus?')">Delete</a></td>
                 </tr>
               <?php } ?>
             </tbody>
