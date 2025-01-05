@@ -48,7 +48,7 @@
                             <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?= base_url()?>assets/images/samar.png" alt="" height="50">
+                            <img src="<?= base_url()?>assets/images/magita.png" alt="" height="50">
                         </span>
                     </a>
 
@@ -158,7 +158,7 @@
                         <img src="<?= base_url()?>assets/images/logo-sm.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url()?>assets/img/samar.png" alt="" height="30">
+                        <img src="<?= base_url()?>assets/img/magita.png" alt="" height="30">
                     </span>
                 </a>
                 <!-- Light Logo-->

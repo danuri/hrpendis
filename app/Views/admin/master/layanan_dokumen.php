@@ -73,7 +73,7 @@
             </div>
             <div class="modal-body" id="object">
             <form action="<?= site_url('master/layanan/dokumen/save')?>" method="POST" id="formadd">
-              <input type="hidden" name="layanan" id="layanan" value="<?= $row->layanan?>">
+              <input type="hidden" name="layanan" id="layanan" value="<?= $id?>">
           <div class="row mb-3">
             <div class="col-lg-3">
               <label for="dokumen" class="form-label">Dokumen</label>

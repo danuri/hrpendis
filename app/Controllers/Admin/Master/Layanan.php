@@ -43,6 +43,7 @@ class Layanan extends BaseController
 
       $data['dokumens'] = $dok->findAll();
       $data['dokumen'] = $model->getLayananDokumen($id);
+      $data['id'] = $id;
       return view('admin/master/layanan_dokumen', $data);
     }
 
