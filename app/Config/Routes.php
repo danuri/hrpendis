@@ -64,6 +64,8 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
     }
  });
 
+ $routes->get('download', 'Download::index',['filter' => 'auth']);
+
  $routes->group("dokumen", ["filter" => "auth"], function ($routes) {
    $routes->get('view/(:num)/(:num)', 'Dokumen::view/$1/$2');
    $routes->get('embed/(:num)/(:num)', 'Dokumen::embed/$1/$2');
@@ -105,6 +107,13 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
            $routes->get('detail/(:any)', 'Admin\Master\Pengelola::detail/$1');
            $routes->get('getdata', 'Admin\Master\Pengelola::getdata');
            $routes->post('save', 'Admin\Master\Pengelola::save');
+       });
+  
+       $routes->group("download", function ($routes) {
+           $routes->get('', 'Admin\Master\Download::index');
+           $routes->post('', 'Admin\Master\Download::save');
+           $routes->post('save', 'Admin\Master\Download::save');
+           $routes->get('delete/(:any)', 'Admin\Master\Download::delete/$1');
        });
    });
  }
