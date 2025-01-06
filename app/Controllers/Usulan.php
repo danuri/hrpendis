@@ -132,4 +132,13 @@ class Usulan extends BaseController
       })
       ->toJson(true);
     }
+
+    function delete($id) {
+      $model = new UsulanModel;
+
+      $id = decrypt($id);
+      $delete = $model->delete($id);
+
+      return redirect()->back()->with('message', 'Usulan telah dihapus.');
+    }
 }

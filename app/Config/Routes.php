@@ -26,6 +26,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
       $routes->get('getdata', 'Usulan::getdata');
       $routes->post('save', 'Usulan::save');
       $routes->get('submit/(:any)', 'Usulan::submit/$1');
+      $routes->get('delete/(:any)', 'Usulan::delete/$1');
     }else if(session('level') == 3){
       $routes->get('', 'Kankemenag\Usulan::index');
       $routes->get('detail/pengantar/(:any)', 'Kankemenag\Usulan::detailpengantar/$1');
