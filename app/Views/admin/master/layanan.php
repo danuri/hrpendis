@@ -85,6 +85,14 @@
           </div>
           <div class="row mb-3">
             <div class="col-lg-3">
+              <label for="kode" class="form-label">Kode</label>
+            </div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Layanan">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-lg-3">
               <label for="keterangan" class="form-label">Keterangan</label>
             </div>
             <div class="col-lg-9">

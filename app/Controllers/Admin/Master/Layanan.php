@@ -24,6 +24,7 @@ class Layanan extends BaseController
       $model = new LayananModel;
       $param = [
         'layanan' => $this->request->getVar('layanan'),
+        'kode' => $this->request->getVar('kode'),
         'keterangan' => $this->request->getVar('keterangan'),
       ];
 
