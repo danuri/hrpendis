@@ -45,7 +45,7 @@ class Usulan extends BaseController
         $id = decrypt($id);
 
         $data['usulan'] = $model->find($id);
-        $data['dokumen'] = $docm->getDokumen(1,$id);
+        $data['dokumen'] = $docm->getDokumen($data['usulan']->layanan,$id);
         return view('kanwil/usulan/detail_pengantar', $data);
     }
 
