@@ -69,7 +69,7 @@ class Usulan extends BaseController
       $ext = pathinfo($file_name, PATHINFO_EXTENSION);
       
       $usulid = $this->request->getVar('id');
-      $file_name = 'kabpengantar.'.$usulid.'.'.$ext;
+      $file_name = 'provpengantar.'.$usulid.'.'.$ext;
       $temp_file_location = $_FILES['dokumen']['tmp_name'];
 
       $s3 = new S3Client([
