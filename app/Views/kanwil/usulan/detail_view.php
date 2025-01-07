@@ -103,7 +103,7 @@
             <?php } ?>
               <tr>
                 <td>Surat Pengantar Kankemenag</td>
-                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $row->kab_pengantar_file?>')">Lihat Dokumen</a></td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Dokumen</a></td>
               </tr>
           </tbody>
         </table>
