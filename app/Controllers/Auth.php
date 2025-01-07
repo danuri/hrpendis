@@ -50,6 +50,7 @@ class Auth extends BaseController
         if($checkrole){
 
           $ses_data = [
+            'id'        => $checkrole->id,
             'nip'        => $data->NIP,
             'niplama'    => $data->NIP_LAMA,
             'nama'       => $data->NAMA,

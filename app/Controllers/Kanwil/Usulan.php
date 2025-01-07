@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Kanwil;
 
+use App\Controllers\Admin\Master\Pengelola;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Hermawan\DataTables\DataTable;
@@ -10,6 +11,7 @@ use App\Models\LayananModel;
 use App\Models\UsulanModel;
 use App\Models\DokLayananModel;
 use App\Models\LogModel;
+use App\Models\PengelolaModel;
 
 class Usulan extends BaseController
 {
@@ -189,29 +191,36 @@ class Usulan extends BaseController
       $id = decrypt($id);
 
       $model = new UsulanModel();
+      $pengelolam = new PengelolaModel();
       $usul = $model->find($id);
 
-      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/template_usul_rekom_pembina.docx');
+      $pengelola = $pengelolam->find(session('id'));
+
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/pengantar.docx');
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
 
-      $templateProcessor->setValue('namaPegawai', $usul->nama);
-      $templateProcessor->setValue('nipPegawai', $usul->nip);
-      $templateProcessor->setValue('levelJabatan', $usul->level_jabatan);
-      $templateProcessor->setValue('tujuan', $pembina->pembina_jabatan);
-      $templateProcessor->setValue('suratDari', $usul->pengantar_dari);
-      $templateProcessor->setValue('nomorSuratDari', $usul->pengantar_nomor);
-      $templateProcessor->setValue('tglSuratDari', local_date($usul->pengantar_tanggal));
-      $templateProcessor->setValue('pangkatPegawai', $usul->pangkat);
-      $templateProcessor->setValue('golonganPegawai', $usul->golongan);
-      $templateProcessor->setValue('jabatanLama', $usul->jabatan_lama);
-      $templateProcessor->setValue('jabatanBaru', $usul->jabatan_baru);
-      $templateProcessor->setValue('satuanKerja', $usul->unit_kerja);
+      $templateProcessor->setValue('satkerinduk', $pengelola->kop_satker);
+      $templateProcessor->setValue('alamat1', $pengelola->kop_alamat1);
+      $templateProcessor->setValue('alamat2', $pengelola->kop_alamat2);
+      $templateProcessor->setValue('alamat3', $pengelola->kop_alamat3);
+      $templateProcessor->setValue('nomor_surat', '');
+      $templateProcessor->setValue('tanggal_surat', '');
+      $templateProcessor->setValue('perihal', $usul->pengantar_dari);
+      $templateProcessor->setValue('nama', $usul->nama);
+      $templateProcessor->setValue('nip', $usul->nip);
+      $templateProcessor->setValue('jabatanawal', $usul->jabatan);
+      $templateProcessor->setValue('jabatanakhir', $usul->jabatan);
+      $templateProcessor->setValue('pangkatgol', $usul->pangkat.' '.$usul->golongan);
+      $templateProcessor->setValue('jabatan', $usul->jabatan);
+      $templateProcessor->setValue('satker', $usul->satker);
+      $templateProcessor->setValue('kab_pengantar_jabatan', $usul->unit_kerja);
+      $templateProcessor->setValue('kab_pengantar_nomor', $usul->unit_kerja);
 
-      $templateProcessor->setValue('nomorSurat', 'nomorsurat');
-      $templateProcessor->setValue('tglSurat', 'tglsurat');
+      $templateProcessor->setValue('nomor_surat', 'nomorsurat');
+      $templateProcessor->setValue('tanggal_surat', 'tglsurat');
 
-      $filename = 'draft_nodin_pembina_jafung_'.$id.'.docx';
+      $filename = 'draft_pengantar_'.$id.'.docx';
       $templateProcessor->saveAs('draft/'.$filename);
 
       return $this->response->download('draft/'.$filename,null);
