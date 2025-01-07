@@ -30,13 +30,9 @@ class Pengelola extends BaseController
       'role' => $this->request->getVar('role'),
     ];
 
-    if($id){
-      $param['id'] = $id;
-    }
+    $save = $model->insert($param);
 
-    $save = $model->save($param);
-
-    // return redirect()->back()->with('message', 'Pengelola telah ditambahkan');
+    return redirect()->back()->with('message', 'Pengelola telah ditambahkan');
 
   }
 }
