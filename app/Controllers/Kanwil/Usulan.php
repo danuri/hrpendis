@@ -99,6 +99,9 @@ class Usulan extends BaseController
         $model = new UsulanModel;
   
         $data = [
+          'prov_pengantar_nomor' => $this->request->getVar('prov_pengantar_nomor'),
+          'prov_pengantar_nama' => $this->request->getVar('prov_pengantar_nama'),
+          'prov_pengantar_jabatan' => $this->request->getVar('prov_pengantar_jabatan'),
           'prov_pengantar_file' => $file_name,
           'status' => 10
         ];

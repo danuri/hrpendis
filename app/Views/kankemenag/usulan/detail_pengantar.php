@@ -114,16 +114,48 @@
       <div class="card-body">
       <form method="post" action="<?= site_url('usulan/pengantar') ?>" class="" id="pengantar2" enctype="multipart/form-data">
           <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
-          <div class="row mb-4">
-            <label for="perihal" class="col-sm-3 col-form-label">Lampiran</label>
-            <div class="col-sm-9">
-            <div class="input-group">
-                <input type="file" class="form-control" name="dokumen" id="inputGroup" aria-describedby="prov_pengantar_file" aria-label="Upload">
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="kab_pengantar_nomor" class="form-label">Nomor Surat Pengantar</label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" class="form-control" id="kab_pengantar_nomor" name="kab_pengantar_nomor" value="<?= $usulan->kab_pengantar_nomor?>">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="kab_pengantar_nama" class="form-label">Penandatangan Nama</label>
+        </div>
+        <div class="col-lg-9">
+        <input type="text" class="form-control" id="kab_pengantar_nama" name="kab_pengantar_nama" value="<?= $usulan->kab_pengantar_nama?>">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="contactNumber" class="form-label">Penandatangan Jabatan</label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" class="form-control" id="kab_pengantar_jabatan" name="kab_pengantar_jabatan" value="<?= $usulan->kab_pengantar_jabatan?>">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="contactNumber" class="form-label">Lampiran</label>
+        </div>
+        <div class="col-lg-9">
+        <div class="input-group">
+                <input type="file" class="form-control" name="dokumen" id="inputGroup" aria-describedby="kab_pengantar_file" aria-label="Upload">
                 <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan">
             </div>
             <?php if($usulan->kab_pengantar_file){?>
               <p>Pengantar telah diunggah: <a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Lampiran</a></p>
             <?php } ?>
+        </div>
+    </div>
+          <div class="row mb-4">
+            <label for="perihal" class="col-sm-3 col-form-label">Lampiran</label>
+            <div class="col-sm-9">
+            
             </div>
           </div>
         </form>
