@@ -152,12 +152,6 @@
             <?php } ?>
         </div>
     </div>
-          <div class="row mb-4">
-            <label for="perihal" class="col-sm-3 col-form-label">Lampiran</label>
-            <div class="col-sm-9">
-            
-            </div>
-          </div>
         </form>
       </div>
     </div>
