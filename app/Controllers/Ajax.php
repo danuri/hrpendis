@@ -22,7 +22,20 @@ class Ajax extends BaseController
         'verify' => false
     ]);
 
-    return $this->response->setJSON($response->getBody());
+    $response = json_decode($response->getBody());
+
+    $tmt = $response->data->TMT_CPNS;
+
+    $date1=date_create(conv_date($tmt));
+    $date2=date_create(date('Y-m-d'));
+    $diff=date_diff($date1,$date2)->y;
+
+    if($diff >= 10){
+      return $this->response->setJSON($response);
+    }else{
+      return $this->response->setJSON(['status'=>false,'message'=>'Masa Kerja Pegawai belum 10 Tahun.']);
+    }
+
   }
 
   function getLog($usulid) {

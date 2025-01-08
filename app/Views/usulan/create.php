@@ -144,10 +144,15 @@ $(document).ready(function() {
     }else{
       axios.get('<?= site_url()?>ajax/pegawai/'+$nip)
       .then(function (response) {
-        $('#nama').val(response.data.data.NAMA_LENGKAP);
-        $('#jabatan').val(response.data.data.TAMPIL_JABATAN);
-        $('#satker').val(response.data.data.SATKER_3);
-        $('#kode_satker').val(response.data.data.KODE_SATKER_3);
+
+        if(response.data.status){
+          $('#nama').val(response.data.data.NAMA_LENGKAP);
+          $('#jabatan').val(response.data.data.TAMPIL_JABATAN);
+          $('#satker').val(response.data.data.SATKER_3);
+          $('#kode_satker').val(response.data.data.KODE_SATKER_3);
+        }else{
+          alert(response.data.message);
+        }
       });
     }
 

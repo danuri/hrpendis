@@ -101,6 +101,13 @@ function id_date($tgl){
 	return $tanggal.'/'.$bulan.'/'.$tahun;
 }
 
+function conv_date($tgl){
+	$tanggal = substr($tgl,0,2);
+	$bulan = substr($tgl,3,2);
+	$tahun = substr($tgl,6,4);
+	return $tahun.'-'.$bulan.'-'.$tanggal;
+}
+
 function read_date($tgl){
   $time = strtotime($tgl);
   return date('d/m/Y', $time);
