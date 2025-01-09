@@ -49,13 +49,13 @@
           <div class="row mb-4">
             <label for="nomor_usul" class="col-sm-3 col-form-label">Nomor Surat Pengantar</label>
             <div class="col-sm-9">
-              <input type="text" name="nomor_pengantar" class="form-control" id="nomor_usul" value="<?= $usulan->nomor_pengantar ?>" disabled>
+              <input type="text" name="nomor_pengantar" class="form-control" id="nomor_usul" value="<?= $usulan->prov_pengantar_nomor ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
             <label for="tanggal_usul" class="col-sm-3 col-form-label">Tanggal Surat Pengantar</label>
             <div class="col-sm-9">
-              <input type="date" name="tanggal_pengantar" class="form-control" id="tanggal_usul" value="<?= $usulan->tanggal_pengantar ?>" disabled>
+              <input type="date" name="tanggal_pengantar" class="form-control" id="tanggal_usul" value="<?= $usulan->prov_pengantar_tanggal ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
@@ -67,13 +67,13 @@
           <div class="row mb-4">
             <label for="perihal" class="col-sm-3 col-form-label">Nama Penandatangan Usul</label>
             <div class="col-sm-9">
-              <input type="text" name="penandatangan" class="form-control" id="penandatangan_usul" value="<?= $usulan->penandatangan ?>" disabled>
+              <input type="text" name="penandatangan" class="form-control" id="penandatangan_usul" value="<?= $usulan->prov_pengantar_nama ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
             <label for="perihal" class="col-sm-3 col-form-label">Jabatan Penandatangan Usul</label>
             <div class="col-sm-9">
-              <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->jabatan_penandatangan ?>" disabled>
+              <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->prov_pengantar_jabatan ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
@@ -103,7 +103,7 @@
             <?php } ?>
               <tr>
                 <td>Surat Pengantar Kankemenag</td>
-                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Dokumen</a></td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat Dokumen</a></td>
               </tr>
           </tbody>
         </table>
@@ -112,8 +112,45 @@
 
     <div class="card border card-border-success">
         <div class="card-header">
-            <a href="javascript:;" type="button" class="btn btn-success float-end fs-11" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat</a>
-            <h6 class="card-title mb-0">Surat Pengantar dari Kanwil</h6>
+            <h6 class="card-title mb-0">Lampiran Surat Pengantar dari Kanwil</h6>
+        </div>
+        <div class="card-body">
+
+          <form method="post" action="" class="" id="pengantar2">
+            <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="prov_pengantar_nomor" class="form-label">Nomor Surat Pengantar</label>
+          </div>
+          <div class="col-lg-9">
+              <input type="text" class="form-control" id="prov_pengantar_nomor" name="prov_pengantar_nomor" value="<?= $usulan->prov_pengantar_nomor?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="prov_pengantar_nama" class="form-label">Penandatangan Nama</label>
+          </div>
+          <div class="col-lg-9">
+          <input type="text" class="form-control" id="prov_pengantar_nama" name="prov_pengantar_nama" value="<?= $usulan->prov_pengantar_nama?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="contactNumber" class="form-label">Penandatangan Jabatan</label>
+          </div>
+          <div class="col-lg-9">
+              <input type="text" class="form-control" id="prov_pengantar_jabatan" name="prov_pengantar_jabatan" value="<?= $usulan->prov_pengantar_jabatan?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="contactNumber" class="form-label">Lampiran</label>
+          </div>
+          <div class="col-lg-9">
+          <a href="javascript:;" type="button" class="btn btn-success fs-11" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat</a>
+          </div>
+      </div>
+          </form>
         </div>
     </div>
 

@@ -12,6 +12,7 @@ use App\Models\UsulanModel;
 use App\Models\DokLayananModel;
 use App\Models\LogModel;
 use App\Models\PengelolaModel;
+use App\Models\UsulDokumenModel;
 
 class Usulan extends BaseController
 {
@@ -99,6 +100,7 @@ class Usulan extends BaseController
         $model = new UsulanModel;
   
         $data = [
+          'prov_pengantar_tanggal' => $this->request->getVar('prov_pengantar_tanggal'),
           'prov_pengantar_nomor' => $this->request->getVar('prov_pengantar_nomor'),
           'prov_pengantar_nama' => $this->request->getVar('prov_pengantar_nama'),
           'prov_pengantar_jabatan' => $this->request->getVar('prov_pengantar_jabatan'),
@@ -130,8 +132,8 @@ class Usulan extends BaseController
 
       return DataTable::of($builder)
       ->add('action', function($row){
-        if($row->status == 1){
-          return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Terima usulan?\')">Terima</a>';
+        if($row->status == 5){
+          return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Terima Surat?\')">Terima Surat</a>';
         }else{
           return '<a href="'.site_url('usulan/detail/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
         }
@@ -186,7 +188,10 @@ class Usulan extends BaseController
       $logm = new LogModel();
       $logm->insert(['id_usul'=>$id,'status_usulan'=>11,'keterangan'=>'Dikirim Ke Ditjen Pendis','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
 
-      session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
+      $model = new UsulDokumenModel();
+      $update = $model->where(['id_usul'=>$id])->set(['status'=>0])->update();
+
+      session()->setFlashdata('message', 'Usulan telah dikirim ke Ditjen Pendis.');
       return redirect()->to('usulan/detail/'.encrypt($id));
     }
 

@@ -49,13 +49,13 @@
           <div class="row mb-4">
             <label for="nomor_usul" class="col-sm-3 col-form-label">Nomor Surat Pengantar</label>
             <div class="col-sm-9">
-              <input type="text" name="nomor_pengantar" class="form-control" id="nomor_usul" value="<?= $usulan->nomor_pengantar ?>" disabled>
+              <input type="text" name="nomor_pengantar" class="form-control" id="nomor_usul" value="<?= $usulan->prov_pengantar_nomor ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
             <label for="tanggal_usul" class="col-sm-3 col-form-label">Tanggal Surat Pengantar</label>
             <div class="col-sm-9">
-              <input type="date" name="tanggal_pengantar" class="form-control" id="tanggal_usul" value="<?= $usulan->tanggal_pengantar ?>" disabled>
+              <input type="date" name="tanggal_pengantar" class="form-control" id="tanggal_usul" value="<?= $usulan->prov_pengantar_tanggal ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
@@ -67,13 +67,13 @@
           <div class="row mb-4">
             <label for="perihal" class="col-sm-3 col-form-label">Nama Penandatangan Usul</label>
             <div class="col-sm-9">
-              <input type="text" name="penandatangan" class="form-control" id="penandatangan_usul" value="<?= $usulan->penandatangan ?>" disabled>
+              <input type="text" name="penandatangan" class="form-control" id="penandatangan_usul" value="<?= $usulan->prov_pengantar_nama ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
             <label for="perihal" class="col-sm-3 col-form-label">Jabatan Penandatangan Usul</label>
             <div class="col-sm-9">
-              <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->jabatan_penandatangan ?>" disabled>
+              <input type="text" name="jabatan_penandatangan" class="form-control" id="penandatangan_jabatan" value="<?= $usulan->prov_pengantar_jabatan ?>" disabled>
             </div>
           </div>
           <div class="row mb-4">
@@ -101,6 +101,14 @@
                 <td id="output<?= $row->id ?>"><?= ($row->lampiran) ? '<a href="javascript:;" onclick="preview(\'https://ropeg.kemenag.go.id:9000/layanan/dokumen/' . $row->lampiran . '\')">Lihat Dokumen</a>' : 'Belum Diunggah'; ?></td>
               </tr>
             <?php } ?>
+            <tr>
+                <td>Surat Pengantar Kankemenag</td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat Dokumen</a></td>
+              </tr>
+              <tr>
+                <td>Surat Pengantar Kanwil</td>
+                <td><a href="javascript:;" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->prov_pengantar_file?>')">Lihat Dokumen</a></td>
+              </tr>
           </tbody>
         </table>
       </div>
@@ -109,20 +117,63 @@
     <div class="card border card-border-success">
         <div class="card-header">
             <a href="<?= site_url('usulan/draftsr/'.encrypt($usulan->id))?>" type="button" class="btn btn-success float-end fs-11">Generate Draft</a>
-            <h6 class="card-title mb-0">Buat Draft Surat Rekomendasi</h6>
+            <h6 class="card-title mb-0">Usul Tanda Tangan Surat Rekomendasi</h6>
         </div>
       <div class="card-body">
-        <?php if($usulan->draft_rekom){?>
-      <iframe width="100%" height="400" src="https://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe>
-      <?php }else{?>
-        Draft belum dibuat. Silahkan klik <strong>Generate Draft</strong> terlebih dahulu
-      <?php }?>
-      </div>
+      <form method="post" action="<?= site_url('usulan/rekomendasi') ?>" class="" id="pengantar2" enctype="multipart/form-data">
+          <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
+          <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_nomor" class="form-label">Nomor Surat Rekomendasi</label>
+        </div>
+        <div class="col-lg-9">
+            <input type="text" class="form-control" id="rekomendasi_nomor" name="rekomendasi_nomor" value="<?= $usulan->rekomendasi_nomor?>">
+        </div>
     </div>
-    <div class="text-end mb-5">
-      <?php if($usulan->draft_rekom){?>
-      <a href="<?= site_url('usulan/storesign/'.encrypt($usulan->id))?>" class="btn btn-primary" onclick="return confirm('Surat Rekom akan diTandatangani?')">Kirim Untuk TTE</a>
-      <?php } ?>
+          <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_tanggal" class="form-label">Tanggal Surat Rekomendasi</label>
+        </div>
+        <div class="col-lg-9">
+            <input type="date" class="form-control" id="rekomendasi_tanggal" name="rekomendasi_tanggal" value="<?= $usulan->rekomendasi_tanggal?>">
+        </div>
+    </div>
+          <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_tanggal" class="form-label">Rekomendasi Persetujuan</label>
+        </div>
+        <div class="col-lg-9">
+            <select name="rekomendasi_setuju" id="rekomendasi_setuju" class="form-select">
+              <option value="1">Disetujui</option>
+              <option value="2">Tidak Disetujui</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_pengantar_file" class="form-label">Lampiran Surat Pengantar</label>
+        </div>
+        <div class="col-lg-9">
+        <input type="file" class="form-control" name="rekomendasi_pengantar_file" id="rekomendasi_pengantar_file" aria-describedby="rekomendasi_pengantar_file" aria-label="Upload">
+        </div>
+      </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_file" class="form-label">Lampiran Surat Rekomendasi</label>
+        </div>
+        <div class="col-lg-9">
+        <input type="file" class="form-control" name="rekomendasi_file" id="rekomendasi_file" aria-describedby="rekomendasi_file" aria-label="Upload">
+        </div>
+      </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-9">
+        <input type="submit" name="submit" class="btn btn-outline-success" value="Kirim">
+        </div>
+      </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

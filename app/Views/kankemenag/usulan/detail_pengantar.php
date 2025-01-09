@@ -124,6 +124,14 @@
     </div>
     <div class="row mb-3">
         <div class="col-lg-3">
+            <label for="kab_pengantar_tanggal" class="form-label">Tanggal Surat Pengantar</label>
+        </div>
+        <div class="col-lg-9">
+            <input type="date" class="form-control" id="kab_pengantar_tanggal" name="kab_pengantar_tanggal" value="<?= $usulan->kab_pengantar_tanggal?>">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
             <label for="kab_pengantar_nama" class="form-label">Penandatangan Nama</label>
         </div>
         <div class="col-lg-9">

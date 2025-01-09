@@ -122,41 +122,44 @@
         <div class="card-header">
             <h6 class="card-title mb-0">Lampiran Surat Pengantar dari Kankemenag</h6>
         </div>
-        <form method="post" action="" class="" id="pengantar2">
-          <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
-    <div class="row mb-3">
-        <div class="col-lg-3">
-            <label for="kab_pengantar_nomor" class="form-label">Nomor Surat Pengantar</label>
+        <div class="card-body">
+
+          <form method="post" action="" class="" id="pengantar2">
+            <input type="hidden" name="id" id="usulid" value="<?= $usulan->id ?>">
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="kab_pengantar_nomor" class="form-label">Nomor Surat Pengantar</label>
+          </div>
+          <div class="col-lg-9">
+              <input type="text" class="form-control" id="kab_pengantar_nomor" name="kab_pengantar_nomor" value="<?= $usulan->kab_pengantar_nomor?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="kab_pengantar_nama" class="form-label">Penandatangan Nama</label>
+          </div>
+          <div class="col-lg-9">
+          <input type="text" class="form-control" id="kab_pengantar_nama" name="kab_pengantar_nama" value="<?= $usulan->kab_pengantar_nama?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="contactNumber" class="form-label">Penandatangan Jabatan</label>
+          </div>
+          <div class="col-lg-9">
+              <input type="text" class="form-control" id="kab_pengantar_jabatan" name="kab_pengantar_jabatan" value="<?= $usulan->kab_pengantar_jabatan?>" disabled>
+          </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-lg-3">
+              <label for="contactNumber" class="form-label">Lampiran</label>
+          </div>
+          <div class="col-lg-9">
+          <a href="javascript:;" type="button" class="btn btn-success fs-11" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat</a>
+          </div>
+      </div>
+          </form>
         </div>
-        <div class="col-lg-9">
-            <input type="text" class="form-control" id="kab_pengantar_nomor" name="kab_pengantar_nomor" value="<?= $usulan->kab_pengantar_nomor?>" disabled>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-lg-3">
-            <label for="kab_pengantar_nama" class="form-label">Penandatangan Nama</label>
-        </div>
-        <div class="col-lg-9">
-        <input type="text" class="form-control" id="kab_pengantar_nama" name="kab_pengantar_nama" value="<?= $usulan->kab_pengantar_nama?>" disabled>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-lg-3">
-            <label for="contactNumber" class="form-label">Penandatangan Jabatan</label>
-        </div>
-        <div class="col-lg-9">
-            <input type="text" class="form-control" id="kab_pengantar_jabatan" name="kab_pengantar_jabatan" value="<?= $usulan->kab_pengantar_jabatan?>" disabled>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-lg-3">
-            <label for="contactNumber" class="form-label">Lampiran</label>
-        </div>
-        <div class="col-lg-9">
-        <a href="javascript:;" type="button" class="btn btn-success float-end fs-11" onclick="preview('https://ropeg.kemenag.go.id:9000/layanan/dokumen/<?= $usulan->kab_pengantar_file?>')">Lihat</a>
-        </div>
-    </div>
-        </form>
     </div>
 
     <div class="text-end mb-5">

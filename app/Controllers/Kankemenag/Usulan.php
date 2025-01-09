@@ -9,6 +9,7 @@ use Aws\S3\S3Client;
 use App\Models\LayananModel;
 use App\Models\UsulanModel;
 use App\Models\DokLayananModel;
+use App\Models\UsulDokumenModel;
 use App\Models\LogModel;
 
 class Usulan extends BaseController
@@ -97,6 +98,7 @@ class Usulan extends BaseController
         $model = new UsulanModel;
   
         $data = [
+          'kab_pengantar_tanggal' => $this->request->getVar('kab_pengantar_tanggal'),
           'kab_pengantar_nomor' => $this->request->getVar('kab_pengantar_nomor'),
           'kab_pengantar_nama' => $this->request->getVar('kab_pengantar_nama'),
           'kab_pengantar_jabatan' => $this->request->getVar('kab_pengantar_jabatan'),
@@ -192,9 +194,13 @@ class Usulan extends BaseController
       $model->update($id,['status'=>5]);
 
       $logm = new LogModel();
-      $logm->insert(['id_usul'=>$id,'status_usulan'=>5,'keterangan'=>'DIkirim Ke Kanwil','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>5,'keterangan'=>'Dikirim Ke Kanwil','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
 
-      session()->setFlashdata('message', 'Usulan telah diterima. Silahkan melakukan verifikasi.');
+      $model = new UsulDokumenModel();
+
+      $update = $model->where(['id_usul'=>$id])->set(['status'=>0])->update();
+
+      session()->setFlashdata('message', 'Usulan telah dikirim ke Kanwil.');
       return redirect()->to('usulan/detail/'.encrypt($id));
     }
 
