@@ -61,6 +61,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
       $routes->post('save', 'Admin\Usulan::save');
       $routes->post('pengantar', 'Admin\Usulan::pengantar');
       $routes->post('rekomendasi', 'Admin\Usulan::rekomendasi');
+      $routes->get('draftpengantar/(:any)', 'Admin\Usulan::draftpengantar/$1');
       $routes->get('draftsr/(:any)', 'Admin\Usulan::draftsr/$1');
       $routes->get('submit/(:any)', 'Admin\Usulan::submit/$1');
     }

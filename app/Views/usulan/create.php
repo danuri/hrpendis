@@ -53,6 +53,15 @@
                   </div>
                 </div>
                 <div class="row mb-4">
+                  <label for="pangkat" class="col-sm-3 col-form-label">Golongan</label>
+                  <div class="col-sm-5">
+                    <input type="text" name="pangkat" class="form-control" id="pangkat" readonly>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="text" name="golongan" class="form-control" id="golongan" readonly>
+                  </div>
+                </div>
+                <div class="row mb-4">
                   <label for="nomor_usul" class="col-sm-3 col-form-label">Satuan Kerja</label>
                   <div class="col-sm-9">
                     <input type="text" name="satker" class="form-control" id="satker" readonly>
@@ -148,6 +157,8 @@ $(document).ready(function() {
         if(response.data.status){
           $('#nama').val(response.data.data.NAMA_LENGKAP);
           $('#jabatan').val(response.data.data.TAMPIL_JABATAN);
+          $('#pangkat').val(response.data.data.PANGKAT);
+          $('#golongan').val(response.data.data.GOL_RUANG);
           $('#satker').val(response.data.data.SATKER_3);
           $('#kode_satker').val(response.data.data.KODE_SATKER_3);
         }else{

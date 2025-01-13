@@ -107,32 +107,27 @@ class Usulan extends BaseController
         }
     }
 
-    public function draftsr($id) {
+    public function draftpengantar($id) {
       $id = decrypt($id);
 
       $model = new UsulanModel();
       $usul = $model->find($id);
 
-      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/template_usul_rekom_pembina.docx');
+      $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/master_rekom.docx');
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
 
-      $templateProcessor->setValue('namaPegawai', $usul->nama);
-      $templateProcessor->setValue('nipPegawai', $usul->nip);
-      $templateProcessor->setValue('levelJabatan', $usul->level_jabatan);
-      $templateProcessor->setValue('suratDari', $usul->pengantar_dari);
-      $templateProcessor->setValue('nomorSuratDari', $usul->pengantar_nomor);
-      $templateProcessor->setValue('tglSuratDari', local_date($usul->pengantar_tanggal));
-      $templateProcessor->setValue('pangkatPegawai', $usul->pangkat);
-      $templateProcessor->setValue('golonganPegawai', $usul->golongan);
-      $templateProcessor->setValue('jabatanLama', $usul->jabatan_lama);
-      $templateProcessor->setValue('jabatanBaru', $usul->jabatan_baru);
-      $templateProcessor->setValue('satuanKerja', $usul->unit_kerja);
+      $templateProcessor->setValue('nama', $usul->nama);
+      $templateProcessor->setValue('nip', $usul->nip);
+      $templateProcessor->setValue('pangkat', $usul->pangkat.', '.$usul->golongan);
+      $templateProcessor->setValue('jabatanlengkap', $usul->keterangan_jabatan);
+      $templateProcessor->setValue('jabatanbaru', $usul->jabatan_baru.' pada '.$usul->unit_baru);
+      $templateProcessor->setValue('setuju', ($usul->rekomendasi_setuju == 1)?'disetujui':'tidak disetujui');
+      $templateProcessor->setValue('kanwilpengusul', $usul->prov_pengantar_jabatan);
+      $templateProcessor->setValue('kanwilnomor', $usul->prov_pengantar_nomor);
+      $templateProcessor->setValue('kanwiltanggal', $usul->prov_pengantar_tanggal);
 
-      $templateProcessor->setValue('nomorSurat', 'nomorsurat');
-      $templateProcessor->setValue('tglSurat', 'tglsurat');
-
-      $filename = 'draft_rekom_'.$id.'.docx';
+      $filename = 'draft_super_rekom_'.$id.'.docx';
       $templateProcessor->saveAs('draft/'.$filename);
 
       return $this->response->download('draft/'.$filename,null);
@@ -207,6 +202,7 @@ class Usulan extends BaseController
           'rekomendasi_nomor' => $this->request->getVar('rekomendasi_nomor'),
           'rekomendasi_nama' => $this->request->getVar('rekomendasi_nama'),
           'rekomendasi_jabatan' => $this->request->getVar('rekomendasi_jabatan'),
+          'rekomendasi_setuju' => $this->request->getVar('rekomendasi_setuju'),
           'rekomendasi_pengantar_file' => $file_name,
           'rekomendasi_file' => $file_name2,
           'status' => 14

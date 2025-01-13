@@ -35,6 +35,8 @@ class Usulan extends BaseController
         'nip' => $this->request->getVar('nip'),
         'nama' => $this->request->getVar('nama'),
         'jabatan' => $this->request->getVar('jabatan'),
+        'pangkat' => $this->request->getVar('pangkat'),
+        'golongan' => $this->request->getVar('golongan'),
         'status' => 0,
         'created_by' => session('nip'),
       ];
