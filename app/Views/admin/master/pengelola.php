@@ -148,7 +148,7 @@ $(document).ready(function() {
     if($nip == ''){
       alert('NIP tidak boleh kosong');
     }else{
-      axios.get('<?= site_url()?>ajax/pegawai/'+$nip)
+      axios.get('<?= site_url()?>admin/ajax/pegawai/'+$nip)
       .then(function (response) {
         $('#nama').val(response.data.data.NAMA_LENGKAP);
         $('#jabatan').val(response.data.data.TAMPIL_JABATAN);

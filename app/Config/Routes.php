@@ -81,6 +81,11 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
      $routes->get('log/(:any)', 'Ajax::getLog/$1');
  });
 
+ $routes->group("admin/ajax", ["filter" => "auth"], function ($routes) {
+     $routes->get('pegawai/(:any)', 'Admin\Ajax::pegawai/$1');
+     $routes->get('log/(:any)', 'Admin\Ajax::getLog/$1');
+ });
+
  if(session('level') == 1){
 
    $routes->group("master", ["filter" => "auth"], function ($routes) {
