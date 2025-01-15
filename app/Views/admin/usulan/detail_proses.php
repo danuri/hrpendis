@@ -151,14 +151,28 @@
     </div>
     <div class="row mb-3">
         <div class="col-lg-3">
+            <label for="rekomendasi_pengantar_file" class="form-label">Lampiran Surat Pengantar</label>
+        </div>
+        <div class="col-lg-9">
+        <input type="file" class="form-control" name="rekomendasi_pengantar_file" id="rekomendasi_pengantar_file" aria-describedby="rekomendasi_pengantar_file" aria-label="Upload">
+        </div>
+      </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <label for="rekomendasi_file" class="form-label">Lampiran Surat Rekomendasi</label>
+        </div>
+        <div class="col-lg-9">
+        <input type="file" class="form-control" name="rekomendasi_file" id="rekomendasi_file" aria-describedby="rekomendasi_file" aria-label="Upload">
+        </div>
+      </div>
+    <div class="row mb-3">
+        <div class="col-lg-3">
         </div>
         <div class="col-lg-9">
         <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan">
         </div>
       </div>
         </form>
-
-        <iframe width="100%" height="750px" title="Draft" src="https://docs.google.com/gview?url=https://hrms.kemenag.go.id/draft/draft_super_rekom_<?= $usulan->id?>.docx&embedded=true&title=Draft" frameborder="0"></iframe>
       </div>
     </div>
   </div>
