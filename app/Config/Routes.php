@@ -80,7 +80,7 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
      $routes->get('pegawai/(:any)', 'Ajax::pegawai/$1');
      $routes->get('log/(:any)', 'Ajax::getLog/$1');
  });
- 
+
  if(session('level') == 1){
 
    $routes->group("master", ["filter" => "auth"], function ($routes) {
@@ -118,5 +118,11 @@ $routes->group("usulan", ["filter" => "auth"], function ($routes) {
            $routes->post('save', 'Admin\Master\Download::save');
            $routes->get('delete/(:any)', 'Admin\Master\Download::delete/$1');
        });
+
+        $routes->group("ajax", function ($routes) {
+          $routes->get('pegawai/(:any)', 'Admin\Ajax::pegawai/$1');
+          $routes->get('log/(:any)', 'Admin\Ajax::getLog/$1');
+        });
+
    });
  }
