@@ -113,6 +113,9 @@ class Usulan extends BaseController
       $model = new UsulanModel();
       $usul = $model->find($id);
 
+      $model = new LayananModel();
+      $layanan = $model->find($usul->layanan);
+
       $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/master_rekom.docx');
 
       $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
@@ -126,6 +129,7 @@ class Usulan extends BaseController
       $templateProcessor->setValue('kanwilpengusul', $usul->prov_pengantar_jabatan);
       $templateProcessor->setValue('kanwilnomor', $usul->prov_pengantar_nomor);
       $templateProcessor->setValue('kanwiltanggal', $usul->prov_pengantar_tanggal);
+      $templateProcessor->setValue('layanan', $layanan->layanan);
 
       $filename = 'draft_super_rekom_'.$id.'.docx';
       $templateProcessor->saveAs('draft/'.$filename);
