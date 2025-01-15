@@ -129,7 +129,11 @@ class Usulan extends BaseController
       $templateProcessor->setValue('kanwilpengusul', $usul->prov_pengantar_jabatan);
       $templateProcessor->setValue('kanwilnomor', $usul->prov_pengantar_nomor);
       $templateProcessor->setValue('kanwiltanggal', $usul->prov_pengantar_tanggal);
+      $templateProcessor->setValue('perihal', $usul->perihal);
       $templateProcessor->setValue('layanan', $layanan->layanan);
+
+      $templateProcessor->setValue('surat_nomor', $usul->rekomendasi_nomor);
+      $templateProcessor->setValue('surat_tanggal', $usul->rekomendasi_tanggal);
 
       $filename = 'draft_super_rekom_'.$id.'.docx';
       $templateProcessor->saveAs('draft/'.$filename);
